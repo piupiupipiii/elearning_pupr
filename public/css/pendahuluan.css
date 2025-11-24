@@ -1,0 +1,132 @@
+/* AREA CONTAINER */
+.smkk-container.kd-page {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 60px 80px; /* DARI 120px → 60px AGAR KONTEN NAIK */
+    margin-top: -40px;  /* TARIK KE ATAS */
+}
+
+/* KANAN (WRAPPER KOTAK) */
+.kd-illustration-test {
+    width: 600px;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+    margin-top: -50px;  /* TARIK 3 KOTAK LEBIH KE ATAS */
+}
+
+/* 3 KOTAK ORANYE */
+.kd-box {
+    position: absolute;
+    width: 500px;
+    height: 300px;
+    border-radius: 28px;
+
+    background: radial-gradient(
+        circle at center,
+        #ffe29f 0%,
+        #ffb85d 25%,
+        #ff9a33 50%,
+        #f07c00 75%,
+        #d86a00 100%
+    );
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+}
+
+/* POSISI KOTAK SESUAI FIGMA (lebih naik) */
+.kd-box-1 { 
+    top: 80px;      /* DARI -20 → -40 UNTUK LEBIH NAIK */
+    left:   180px;
+    z-index: 1;
+}
+
+.kd-box-2 { 
+    top: 200px;      /* DARI 130 → 100 */
+    left: 10px;
+    z-index: 3;
+}
+
+.kd-box-3 { 
+    top: 400px;      /* DARI 300 → 270 */
+    left: 160px;
+    z-index: 1;
+}
+
+.kd-image {
+    position: absolute;
+    width: 480px;     
+    height: auto;
+    left: 60%;
+    top: 180px;
+    z-index: 5;       /* paling depan */
+    bottom: 0;
+    transform: translateX(-50%);
+    pointer-events: none; /* biar tidak ganggu klik */
+}
+
+.text-section {
+    position: relative;
+    padding-left: 80px;   /* 770 - 80 */
+    padding-top: 50px;
+    max-width: 500px;
+}
+
+.text-section h2 {
+    text-align: center;
+    margin-bottom: 20px; 
+    
+}
+
+
+
+
+/* Hilangkan scroll vertikal di halaman KD */
+.kd-page {
+    overflow: hidden;
+}
+
+.btn-back {
+  position: fixed;   
+  top: 88px;       
+  left: 80px;        
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 9999;    
+}
+
+.btn-back img {
+  width: 65px;
+  height: 65px;
+  filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.3));
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .smkk-container.kd-page { padding: 40px; margin-top: -20px; }
+    .kd-illustration-test { width: 520px; height: 420px; margin-top: -20px; }
+
+    .kd-box { width: 440px; height: 300px; }
+
+    .kd-box-2 { left: 60px; top: 40px; }
+    .kd-box-1 { left: 120px; top: -20px; }
+    .kd-box-3 { left: 140px; top: 160px; }
+}
+
+@media (max-width: 600px) {
+    .smkk-container.kd-page { padding: 20px; margin-top: 0; }
+    .kd-illustration-test { width: 360px; height: 350px; margin-top: -10px; }
+
+    .kd-box { width: 320px; height: 220px; }
+
+    .kd-box-2 { left: 40px; top: 20px; }
+    .kd-box-1 { left: 90px; top: -10px; }
+    .kd-box-3 { left: 110px; top: 120px; }
+}
+
+

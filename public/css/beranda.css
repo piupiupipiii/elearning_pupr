@@ -1,0 +1,170 @@
+/* ===== LATAR & WRAPPER ===== */
+body.main-bg {
+  background: linear-gradient(to bottom, #297BD8, #1B5AA1, #183658);
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 40px 80px; /* kanan kiri diperbesar */
+  box-sizing: border-box;
+  position: relative;
+}
+
+.header-row {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.btn-back {
+    position: fixed;
+    top: 88px;          /* sama dengan kd.css */
+    left: 80px;         /* sama dengan kd.css */
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 9999;
+}
+
+
+.btn-back:hover {
+  transform: scale(1.1);
+}
+
+.btn-back img {
+  width: 65px;
+  height: 65px;
+  filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.3));
+}
+
+.judul {
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+  margin: 0;
+  text-align: center;
+}
+
+.judul-wrapper {
+    width: 100%;
+    text-align: center; /* INI yang bikin judulnya di tengah */
+    transform: translateY(-40px);
+}
+
+/* jarak subjudul = 1.5x jarak judul */
+.subjudul {
+  font-size: 18px;
+  color: #E8E8E8;
+  margin-top: 35px; /* 1.5x dari 15px */
+  text-align: center;
+}
+
+/* ===== CARD CONTAINER ===== */
+.card-container {
+  background: #E8F1FC;
+  border-radius: 16px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.25);
+
+  padding: 40px 50px;   /* padding kanan-kiri ditambah supaya tidak mepet */
+  
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;            /* jarak antar card */
+}
+
+/* ===== CARD ===== */
+.card {
+  position: relative;
+  width: 300px;
+  background: #fff;
+  border: 2.5px solid #FF9C00;
+  border-radius: 15px;
+  padding: 80px 25px 90px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card-icon {
+  position: absolute;
+  top: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 100px;
+}
+
+.card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin: 10px 0 20px;
+}
+
+.card p {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* ===== BUTTON NEXT ===== */
+.btn-next {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  transition: transform 0.25s ease;
+}
+
+.btn-next img {
+  width: 65px;
+  height: 65px;
+}
+
+.btn-next:hover img{
+  content: url(../images/icon/right-arrow\ 1.png);
+  transform: scale(1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .header-row {
+    justify-content: center;
+  }
+
+  .judul {
+    font-size: 32px;
+  }
+
+  .card-container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 30px;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 340px;
+  }
+}

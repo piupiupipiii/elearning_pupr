@@ -1,0 +1,131 @@
+
+body.main-bg {
+    background: linear-gradient(to bottom, #297BD8, #1B5AA1, #183658);
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 60px;
+    position: relative;
+}
+
+.logo {
+    width: 160px;
+    height: auto;
+}
+
+.icon-container {
+    display: flex;
+    gap: 18px;
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.ornamen-kanan {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 180px;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.smkk-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 100px;
+    position: relative;
+}
+
+.text-section {
+    max-width: 600px;
+}
+
+.text-section h2 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.text-section h3 {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.text-section .subtitle {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.text-section .desc {
+    font-size: 18px;
+    color: #dbeafe;
+    margin-top: 15px;
+}
+
+.btn-yellow {
+    background-color: #FACC15;
+    color: #1E3A8A;
+    font-weight: bold;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 8px;
+    margin-top: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.btn-yellow:hover {
+    background-color: #FBBF24;
+}
+
+.illustration-section {
+    background: rgba(30, 99, 183, 0.4);
+    padding: 25px;
+    border-top-left-radius: 1000px;
+    border-top-right-radius: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+}
+
+.illustration-section img {
+    width: 600px;
+    height: auto;
+    object-fit: contain;
+}
+
+.ornamen-bawah {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.header,
+.content,
+.smkk-container {
+    position: relative;
+    z-index: 5;
+}
