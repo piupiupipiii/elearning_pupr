@@ -1,0 +1,206 @@
+/* public/css/parallax.css */
+
+/* WRAPPER */
+.parallax-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 0px);
+}
+
+/* ORNAMENT (fixed, behind content) */
+.parallax {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+  opacity: 0.95;
+}
+
+/* kanan atas small ornament (if present) */
+.ornamen-kanan {
+  top: 18px;
+  right: 18px;
+  width: 140px;
+  height: auto;
+}
+
+/* kanan bawah wave ornament (behind cards) */
+.ornamen-bawah {
+  bottom: 0;
+  right: 0;
+  width: 420px;
+  height: auto;
+  opacity: 0.9;
+}
+
+/* Ensure header/content above ornaments */
+.header,
+.content,
+.parallax-inner {
+  position: relative;
+  z-index: 5;
+}
+
+/* PARALLAX INNER: main content area with left text + right slider */
+.parallax-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 36px 80px;
+  box-sizing: border-box;
+}
+
+/* CENTERED TITLE & SUBTITLE (top of page) */
+.title-center {
+  text-align: center;
+  font-size: 40px;
+  color: #fff;
+  font-weight: 700;
+  margin: 12px 0 0;
+}
+
+.subtitle-center {
+  text-align: center;
+  color: #fff;
+  opacity: 0.95;
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+/* LEFT INFO (text block) */
+.left-info {
+  width: 38%;
+  max-width: 540px;
+  color: #fff;
+}
+
+.left-info h2 {
+  font-size: 28px;
+  letter-spacing: 0.5px;
+  margin: 0 0 8px 0;
+}
+
+.left-info h3 {
+  font-size: 36px;
+  margin: 6px 0 18px 0;
+  font-weight: 800;
+}
+
+.left-info p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.95);
+  margin: 0;
+}
+
+.btn-start {
+  display: inline-block;
+  margin-top: 34px;
+  background: #F0B92F; /* golden */
+  color: #112047;
+  font-size: 26px;
+  padding: 12px 36px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* SLIDER (right) */
+.slider-area {
+  width: 56%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* navigation arrows */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.0);
+  border: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 8;
+}
+
+.nav-left { left: -12px; }
+.nav-right { right: -12px; }
+
+.nav-btn:focus { outline: none; }
+
+/* track wrapper with overflow hidden */
+.slider-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* the track that moves */
+.slider-track {
+  display: flex;
+  gap: 28px;
+  transition: transform 420ms cubic-bezier(.22,.9,.36,1);
+  padding: 22px 10px;
+  align-items: center;
+}
+
+/* card style matches reference */
+.slider-card {
+  width: 340px;
+  min-width: 340px;
+  height: 460px;
+  background: #fff;
+  border-radius: 28px;
+  border: 4px solid #f4a43a; /* orange border */
+  box-shadow: 0 18px 42px rgba(0,0,0,0.28);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 26px 18px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* small title and lock icon */
+.slider-card h4 {
+  font-size: 20px;
+  margin: 8px 0 8px;
+  font-weight: 800;
+  color: #111;
+}
+
+.slider-card .icon-lock {
+  width: 36px;
+  margin: 10px 0 16px;
+}
+
+/* illustration inside card */
+.slider-card .illustration {
+  width: 220px;
+  height: auto;
+  margin-top: 12px;
+}
+
+/* responsive plumbing */
+@media (max-width: 1100px) {
+  .parallax-inner { padding: 28px; gap: 20px; }
+  .left-info { width: 40%; max-width: 420px; }
+  .slider-area { width: 58%; }
+  .slider-card { width: 300px; min-width: 300px; height: 420px; }
+}
+
+@media (max-width: 800px) {
+  .parallax-inner { flex-direction: column; align-items: center; text-align: center; }
+  .left-info { width: 90%; order: 2; }
+  .slider-area { width: 100%; order: 1; margin-bottom: 12px; }
+  .nav-left, .nav-right { display: none; }
+}

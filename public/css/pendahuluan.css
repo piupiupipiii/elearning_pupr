@@ -60,7 +60,7 @@
     width: 480px;     
     height: auto;
     left: 60%;
-    top: 180px;
+    top: 192px;
     z-index: 5;       /* paling depan */
     bottom: 0;
     transform: translateX(-50%);
@@ -80,6 +80,9 @@
     
 }
 
+body, .header, .header-bg {
+    background-image: none !important;
+}
 
 
 

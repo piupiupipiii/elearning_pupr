@@ -16,12 +16,7 @@
         <h2>PENDAHULUAN</h2>
 
         <p class="kd-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum.
+            Media pembelajaran ini disusun untuk membantu peserta memahami Dasar-dasar Penerapan SMKK pada pekerjaan konstruksi. Materi disajikan secara interaktif melalui video, ilustrasi, dan kuis, sehingga peserta dapat mempelajari setiap bagian dengan lebih mudah dan terarah. Melalui pengenalan konsep, tujuan, serta ruang lingkup SMKK, diharapkan peserta mampu menerapkan prinsip keselamatan konstruksi secara tepat dalam kegiatan proyek di lapangan.
         </p>
     </div>
 

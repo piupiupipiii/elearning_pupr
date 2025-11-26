@@ -17,3 +17,9 @@ Route::get('/beranda', function () {
 Route::get('/kd', function (){
     return view('pages.kd');
 })->name('kd');
+
+Route::get('/submenu', function (){
+    return view('pages.submenu');
+})->name('submenu');
+
+Route::get('/materi/submenu', function () { return view('submenu'); });
