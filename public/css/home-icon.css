@@ -1,0 +1,26 @@
+/* Wrapper */
+.home-icon-content {
+    position: relative;
+    z-index: 10; /* agar tidak ketimpa */
+}
+
+/* ICON HOME FIXED */
+.home-icon {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+
+    z-index: 999;
+    display: inline-block;
+}
+
+.home-icon img {
+    width: 60px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.18s ease;
+}
+
+.home-icon img:hover {
+    transform: scale(1.1);
+}

@@ -2,21 +2,21 @@
 @extends('layouts.layout')
 
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/parallax.css') }}">
+    {{-- background + layout khusus halaman parallax / submenu --}}
+    <link rel="stylesheet" href="{{ asset('css/parallax.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
 @endpush
 
 @section('content')
     <div class="parallax-wrapper">
-        {{-- include ornaments partial (kanan & bawah) --}}
+
         @include('partials.parallax')
 
-        {{-- content halaman --}}
-        <div class="parallax-inner">
+        <img src="{{ asset('images/Group 1.png') }}" class="bottom-ornamen" alt="ornamen bottom">
+
+        {{-- konten halaman yang duduk di atas background --}}
+        <div class="parallax-inner submenu-main">
             @yield('parallax-content')
         </div>
     </div>
 @endsection
-
-@push('scripts')
-<script src="{{ asset('js/parallax.js') }}"></script>
-@endpush
