@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   margin-top: 140px; /* sejajar dengan kiri */
+  gap: 2rem;
 }
 
 .slider-viewport {
@@ -22,7 +23,7 @@
   transition: transform 520ms cubic-bezier(.22, .9, .36, 1);
   will-change: transform;
   padding-bottom: 12px;
-  transform: translateX(100px);
+  transform: translateX(0);
 }
 
 /* kartu dasar */
@@ -86,11 +87,12 @@
 .nav-btn {
   background: none;
   border: none;
-  color: #fff;
+  color: #080808;
   font-size: 36px;
   cursor: pointer;
   z-index: 40;
   padding: 6px 12px;
+  padding-left: 0;
 }
 
 .nav-left {
