@@ -9,7 +9,7 @@
 
 .slider-viewport {
   width: 100%;
-  overflow: visible; 
+  overflow: visible;
   padding: 0;
   margin: 0;
 }
@@ -40,11 +40,23 @@
   justify-content: space-between;
   position: relative;
   min-width: 260px;
-  z-index: 15; 
+  z-index: 15;
   width: 350px;
   height: 400px;
   border-radius: 24px;
   padding: 2%;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.slider-card.locked {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.slider-card:hover:not(.locked) {
+  border-color: #1B5AA1;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
 }
 
 /* ukuran kartu aktif & non-aktif */
