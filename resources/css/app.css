@@ -9,3 +9,39 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* PUPR E-Learning Color Palette */
+:root {
+    /* Primary Colors */
+    --primary-blue: #1B5AA1;
+    --secondary-blue: #297BD8;
+    --dark-blue: #183658;
+
+    /* Accent Colors */
+    --primary-orange: #FF9C00;
+    --secondary-orange: #F0B92F;
+
+    /* Status Colors */
+    --success-green: #4CAF50;
+    --error-red: #f44336;
+    --warning-orange: #FFB74D;
+
+    /* Background Colors */
+    --bg-light: #E8F1FC;
+    --bg-white: #FFFFFF;
+
+    /* Text Colors */
+    --text-dark: #333333;
+    --text-light: #E8E8E8;
+    --text-gray: #666666;
+
+    /* Shadow */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.25);
+
+    /* Transitions */
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}

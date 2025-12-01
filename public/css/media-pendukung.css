@@ -1,0 +1,259 @@
+/* ===== LATAR & WRAPPER ===== */
+body.main-bg {
+  background: linear-gradient(to bottom, #297BD8, #1B5AA1, #183658);
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 40px 80px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* ===== HEADER ===== */
+.header-row {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+
+.btn-back {
+    position: fixed;
+    top: 88px;
+    left: 80px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 9999;
+}
+
+.btn-back:hover {
+  transform: scale(1.1);
+}
+
+.btn-back img {
+  width: 65px;
+  height: 65px;
+  filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.3));
+}
+
+.judul {
+  font-size: 42px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0px 3px 5px rgba(0,0,0,0.3);
+  margin: 0;
+  text-align: center;
+}
+
+.judul-wrapper {
+    width: 100%;
+    text-align: center;
+    transform: translateY(-40px);
+}
+
+.subjudul {
+  font-size: 18px;
+  color: #E8E8E8;
+  margin-top: 35px;
+  text-align: center;
+}
+
+/* ===== MEDIA CONTAINER ===== */
+.media-container {
+  background: #E8F1FC;
+  border-radius: 16px;
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.25);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ===== MEDIA CARD ===== */
+.media-card {
+  background: #fff;
+  border: 2px solid #FF9C00;
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+}
+
+.media-card:hover {
+  border-color: #F0B92F;
+  box-shadow: 0 8px 25px rgba(240, 185, 47, 0.3);
+  transform: translateY(-2px);
+}
+
+.media-icon {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+}
+
+.media-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.media-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.media-info h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1B5AA1;
+  margin: 0 0 10px 0;
+}
+
+.media-description {
+  font-size: 15px;
+  color: #333;
+  line-height: 1.5;
+  margin: 0 0 10px 0;
+}
+
+.media-meta {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.file-type {
+  display: inline-block;
+  padding: 4px 10px;
+  background: #FF9C00;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.file-size {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===== DOWNLOAD BUTTON ===== */
+.btn-download {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.btn-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+}
+
+.btn-download svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.empty-state img {
+  margin-bottom: 20px;
+}
+
+.empty-state p {
+  font-size: 18px;
+  color: #999;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .header-row {
+    justify-content: center;
+  }
+
+  .judul {
+    font-size: 32px;
+  }
+
+  .media-container {
+    padding: 30px 20px;
+  }
+
+  .media-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .media-info {
+    width: 100%;
+  }
+
+  .media-meta {
+    justify-content: center;
+  }
+
+  .btn-download {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: 20px;
+  }
+
+  .judul {
+    font-size: 28px;
+  }
+
+  .subjudul {
+    font-size: 16px;
+  }
+
+  .media-card {
+    padding: 20px;
+  }
+
+  .media-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .media-info h3 {
+    font-size: 18px;
+  }
+
+  .media-description {
+    font-size: 14px;
+  }
+}

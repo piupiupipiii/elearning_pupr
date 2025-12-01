@@ -34,9 +34,11 @@
                 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
 
-            <button class="btn-next">
-                <img src="{{ asset('images/icon/right-arrow (2).png') }}" alt="Next">
-            </button>
+            <a href="{{ route('kd') }}">
+                <button class="btn-next">
+                    <img src="{{ asset('images/icon/right-arrow (2).png') }}" alt="Next">
+                </button>
+            </a>
         </div>
 
         {{-- CARD 2 --}}
@@ -51,9 +53,11 @@
                 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
 
-            <button class="btn-next">
-                <img src="{{ asset('images/icon/right-arrow (2).png') }}" alt="Next">
-            </button>
+            <a href="{{ route('submenu') }}">
+                <button class="btn-next">
+                    <img src="{{ asset('images/icon/right-arrow (2).png') }}" alt="Next">
+                </button>
+            </a>
         </div>
 
         {{-- CARD 3 --}}
@@ -68,9 +72,11 @@
                 Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
 
-            <button class="btn-next">
-                <img src="{{ asset('images/icon/right-arrow (2).png') }}" alt="Next">
-            </button>
+            <a href="{{ route('media-pendukung') }}">
+                <button class="btn-next">
+                    <img src="{{ asset('images/icon/right-arrow (2).png') }}" alt="Next">
+                </button>
+            </a>
         </div>
 
     </div> {{-- /card-container --}}

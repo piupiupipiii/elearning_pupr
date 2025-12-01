@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\SupportingMediaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,6 +34,11 @@ Route::middleware('auth')->group(function () {
     // Quiz
     Route::get('/materi/{material}/quiz', [QuizController::class, 'show'])->name('quiz.show');
     Route::post('/materi/{material}/quiz', [QuizController::class, 'submit'])->name('quiz.submit');
+    Route::post('/quiz/question/{question}/validate', [QuizController::class, 'validateAnswer'])->name('quiz.validate');
+
+    // Supporting Media
+    Route::get('/media-pendukung', [SupportingMediaController::class, 'index'])->name('media-pendukung');
+    Route::get('/media-pendukung/{media}/download', [SupportingMediaController::class, 'download'])->name('media.download');
 });
 
 // Admin routes (accessible to everyone for now)
@@ -52,6 +58,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/materials/{material}/questions/{question}/edit', [AdminController::class, 'questionsEdit'])->name('questions.edit');
     Route::put('/materials/{material}/questions/{question}', [AdminController::class, 'questionsUpdate'])->name('questions.update');
     Route::delete('/materials/{material}/questions/{question}', [AdminController::class, 'questionsDestroy'])->name('questions.destroy');
+
+    // Supporting Media CRUD
+    Route::get('/media', [SupportingMediaController::class, 'adminIndex'])->name('media.index');
+    Route::get('/media/create', [SupportingMediaController::class, 'create'])->name('media.create');
+    Route::post('/media', [SupportingMediaController::class, 'store'])->name('media.store');
+    Route::delete('/media/{media}', [SupportingMediaController::class, 'destroy'])->name('media.destroy');
 });
 
 // Auth routes

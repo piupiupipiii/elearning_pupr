@@ -48,16 +48,31 @@ class QuizController extends Controller
             abort(403, 'Anda belum bisa mengakses quiz ini.');
         }
 
-        // Save all answers (allows retakes - creates new records)
-        $questions = $material->questions;
-        foreach ($questions as $question) {
-            $answerKey = 'question_' . $question->id;
-            if ($request->has($answerKey)) {
+        // Parse answers from JSON format (new quiz system sends JSON)
+        $answersJson = $request->input('answers');
+        $answers = json_decode($answersJson, true);
+
+        if ($answers && is_array($answers)) {
+            // Save all answers from JSON format
+            foreach ($answers as $questionId => $selectedAnswer) {
                 UserAnswer::create([
                     'user_id' => $user->id,
-                    'question_id' => $question->id,
-                    'selected_answer' => $request->input($answerKey),
+                    'question_id' => $questionId,
+                    'selected_answer' => $selectedAnswer,
                 ]);
+            }
+        } else {
+            // Fallback to old format for backward compatibility
+            $questions = $material->questions;
+            foreach ($questions as $question) {
+                $answerKey = 'question_' . $question->id;
+                if ($request->has($answerKey)) {
+                    UserAnswer::create([
+                        'user_id' => $user->id,
+                        'question_id' => $question->id,
+                        'selected_answer' => $request->input($answerKey),
+                    ]);
+                }
             }
         }
 
@@ -68,6 +83,20 @@ class QuizController extends Controller
         $this->unlockNextMaterial($user, $material);
 
         return redirect()->route('submenu')->with('success', 'Quiz selesai! Materi berikutnya telah dibuka.');
+    }
+
+    /**
+     * Validate single answer via AJAX
+     */
+    public function validateAnswer(Request $request, Question $question)
+    {
+        $selectedAnswer = $request->input('answer');
+        $isCorrect = $selectedAnswer === $question->correct_answer;
+
+        return response()->json([
+            'correct' => $isCorrect,
+            'correct_answer' => $question->correct_answer,
+        ]);
     }
 
     /**
