@@ -20,5 +20,22 @@
     </main>
 
     @stack('scripts')
+
+    <script>
+    function toggleUserMenu() {
+        const dropdown = document.getElementById('userDropdown');
+        dropdown.classList.toggle('show');
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('userDropdown');
+        const iconWrapper = event.target.closest('.icon-wrapper');
+
+        if (!iconWrapper && dropdown) {
+            dropdown.classList.remove('show');
+        }
+    });
+    </script>
 </body>
 </html>

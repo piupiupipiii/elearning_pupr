@@ -3,25 +3,33 @@
         <img src="{{ asset('images/logo.png') }}" alt="Logo KemenPU" class="logo">
     </div>
 
-    <div class="auth-links" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%);">
+    <div class="icon-container">
         @auth
-            <span style="color: #333; margin-right: 10px;">Halo, {{ Auth::user()->name }}</span>
-            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                @csrf
-                <button type="submit" style="background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Logout</button>
-            </form>
+            <!-- User Icon: Shows dropdown with name and logout -->
+            <div class="icon-wrapper" onclick="toggleUserMenu()">
+                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="User" class="icon">
+                <div class="user-dropdown" id="userDropdown">
+                    <span>{{ Auth::user()->name }}</span>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            </div>
         @else
-            <a href="{{ route('login') }}" style="color: #007bff; text-decoration: none; margin-right: 15px; font-weight: 500;">Login</a>
-            <a href="{{ route('signup') }}" style="background: #28a745; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500;">Daftar</a>
+            <!-- User Icon: Links to login page -->
+            <a href="{{ route('login') }}">
+                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="User" class="icon">
+            </a>
         @endauth
+
+        <!-- Question Icon: No-op for now -->
+        <img src="https://cdn-icons-png.flaticon.com/512/4379/4379546.png" alt="Question" class="icon">
+
+        <!-- Audio Icon: No-op for now -->
+        <img src="https://cdn-icons-png.flaticon.com/512/786/786407.png" alt="Audio" class="icon">
     </div>
 
-    <!-- <div class="icon-container">
-        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="User" class="icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/4379/4379546.png" alt="Question" class="icon">
-        <img src="https://cdn-icons-png.flaticon.com/512/786/786407.png" alt="Audio" class="icon">
-    </div> -->
-<!--
-    Ornamen di pojok kanan atas
-    <img src="{{ asset('images/ornamen-atas.png') }}" alt="Ornamen" class="ornamen-kanan"> -->
+    <!-- Ornamen di pojok kanan atas -->
+    <img src="{{ asset('images/ornamen-atas.png') }}" alt="Ornamen" class="ornamen-kanan">
 </header>

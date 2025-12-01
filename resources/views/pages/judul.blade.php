@@ -12,11 +12,11 @@
 
         @auth
             <a href="{{ route('intro') }}">
-                <button class="btn-mulai">Mulai</button>
+                <button class="btn-yellow">Mulai</button>
             </a>
         @else
             <a href="{{ route('login') }}">
-                <button class="btn-mulai">Mulai</button>
+                <button class="btn-yellow">Mulai</button>
             </a>
         @endauth 
 
