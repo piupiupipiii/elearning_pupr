@@ -10,9 +10,15 @@
         <p class="subtitle">(Sistem Manajemen Keselamatan Konstruksi)</p>
         <p class="desc">Pelatihan Spesifikasi Umum untuk Pekerjaan Konstruksi Jalan dan Jembatan</p>
 
-        <a href="{{ route('intro') }}">
-            <button class="btn-mulai">Mulai</button>
-        </a> 
+        @auth
+            <a href="{{ route('intro') }}">
+                <button class="btn-yellow">Mulai</button>
+            </a>
+        @else
+            <a href="{{ route('login') }}">
+                <button class="btn-yellow">Mulai</button>
+            </a>
+        @endauth 
 
     </div>
 

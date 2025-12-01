@@ -11,7 +11,7 @@
         <p class="desc">Pelatihan Spesifikasi Umum untuk Pekerjaan Konstruksi Jalan dan Jembatan</p>
 
         <a href="{{ route('beranda') }}">
-            <button class="btn-mulai">Mulai Pembelajaran</button>
+            <button class="btn-yellow">Mulai Pembelajaran</button>
         </a>
 
     </div>

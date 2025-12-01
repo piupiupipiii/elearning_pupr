@@ -4,51 +4,59 @@
 
 @section('parallax-content')
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     {{-- Ornamen kuning di kanan atas --}}
     <img src="{{ asset('images/line-10.png') }}" class="top-ornamen" alt="ornamen top">
 
     {{-- Judul halaman di tengah --}}
     <div class="submenu-header">
-        <h1 class="title-center">Quiz SEKSI {{ $material->section_number }}</h1>
-        <div class="subtitle-center">{{ $material->title }}</div>
+        <h1 class="title-center" id="quiz-title">QUIZ {{ $questions->count() > 0 ? '1' : '' }}</h1>
     </div>
 
     {{-- Konten Quiz --}}
-    <div class="quiz-content">
+    <div class="quiz-content-new">
         @if($questions->isEmpty())
             <div class="quiz-empty">
                 <h3>Belum ada pertanyaan untuk quiz ini.</h3>
                 <p>Silakan hubungi admin untuk menambahkan pertanyaan.</p>
-                <a href="{{ route('materi.show', $material) }}" class="btn-back">← Kembali ke Materi</a>
+                <a href="{{ route('materi.show', $material) }}" class="btn-back-empty">← Kembali ke Materi</a>
             </div>
         @else
-            <form action="{{ route('quiz.submit', $material) }}" method="POST" class="quiz-form">
-                @csrf
-
+            {{-- Question Container --}}
+            <div class="question-container">
                 @foreach($questions as $index => $question)
-                    <div class="question-card">
-                        <div class="question-number">Pertanyaan {{ $index + 1 }}</div>
-                        <div class="question-text">{{ $question->question_text }}</div>
+                    <div class="question-slide" data-question-index="{{ $index }}" data-question-id="{{ $question->id }}" style="{{ $index === 0 ? '' : 'display: none;' }}">
+                        {{-- Question Box --}}
+                        <div class="question-box">
+                            <p class="question-text">{{ $question->question_text }}</p>
+                        </div>
 
-                        <div class="options-list">
+                        {{-- Answer Options --}}
+                        <div class="options-grid">
                             @foreach($question->options as $key => $option)
-                                <label class="option-item">
-                                    <input type="radio"
-                                           name="question_{{ $question->id }}"
-                                           value="{{ $key }}"
-                                           required>
-                                    <span class="option-key">{{ $key }}</span>
-                                    <span class="option-text">{{ $option }}</span>
-                                </label>
+                                <div class="option-card" data-answer="{{ $key }}" data-correct="{{ $key === $question->correct_answer ? 'true' : 'false' }}">
+                                    <div class="option-badge">{{ $key }}</div>
+                                    <div class="option-text">{{ $option }}</div>
+                                    <div class="feedback-icon"></div>
+                                </div>
                             @endforeach
                         </div>
                     </div>
                 @endforeach
+            </div>
 
-                <div class="quiz-actions">
-                    <a href="{{ route('materi.show', $material) }}" class="btn-back">← Kembali ke Materi</a>
-                    <button type="submit" class="btn-submit">Kirim Jawaban</button>
-                </div>
+            {{-- Next Button (initially hidden) --}}
+            <button class="btn-next-question" id="btn-next-question" style="display: none;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            {{-- Hidden form for final submission --}}
+            <form id="quiz-submit-form" action="{{ route('quiz.submit', $material) }}" method="POST" style="display: none;">
+                @csrf
+                <input type="hidden" name="answers" id="quiz-answers" value="">
             </form>
         @endif
     </div>
@@ -57,11 +65,12 @@
 
 @push('styles')
 <style>
-    .quiz-content {
-        max-width: 800px;
+    .quiz-content-new {
+        max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
         margin-top: 120px;
+        position: relative;
     }
 
     .quiz-empty {
@@ -82,162 +91,226 @@
         margin-bottom: 25px;
     }
 
-    .quiz-form {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
+    .btn-back-empty {
+        display: inline-block;
+        padding: 14px 30px;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #1B5AA1;
+        border: 2px solid #1B5AA1;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
     }
 
-    .question-card {
+    .btn-back-empty:hover {
+        background: #1B5AA1;
+        color: white;
+    }
+
+    /* Question Container */
+    .question-container {
+        position: relative;
+        min-height: 500px;
+    }
+
+    .question-slide {
+        animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Question Box */
+    .question-box {
         background: rgba(255, 255, 255, 0.95);
-        border-radius: 12px;
-        padding: 25px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .question-number {
-        color: #F0B92F;
-        font-weight: 700;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 10px;
+        border: 3px solid #FF9C00;
+        border-radius: 30px;
+        padding: 40px;
+        margin-bottom: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .question-text {
         color: #1B5AA1;
-        font-size: 1.15rem;
+        font-size: 1.3rem;
         font-weight: 600;
-        margin-bottom: 20px;
-        line-height: 1.5;
+        text-align: center;
+        line-height: 1.6;
+        margin: 0;
     }
 
-    .options-list {
+    /* Options Grid */
+    .options-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .option-card {
+        background: #F5F2DC;
+        border-radius: 25px;
+        padding: 30px 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        min-height: 180px;
         display: flex;
         flex-direction: column;
-        gap: 12px;
-    }
-
-    .option-item {
-        display: flex;
         align-items: center;
-        gap: 12px;
-        padding: 15px;
-        background: #f8f9fa;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        border: 2px solid transparent;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .option-item:hover {
-        background: #e9ecef;
-        border-color: #1B5AA1;
+    .option-card:hover:not(.selected):not(.disabled) {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
 
-    .option-item input[type="radio"] {
-        display: none;
-    }
-
-    .option-item input[type="radio"]:checked + .option-key {
-        background: #1B5AA1;
-        color: white;
-    }
-
-    .option-item input[type="radio"]:checked ~ .option-text {
-        color: #1B5AA1;
-        font-weight: 600;
-    }
-
-    .option-item:has(input[type="radio"]:checked) {
-        border-color: #1B5AA1;
-        background: #e8f0fe;
-    }
-
-    .option-key {
+    .option-badge {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 45px;
+        height: 45px;
+        background: #FF9C00;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 32px;
-        height: 32px;
-        background: #ddd;
-        color: #333;
-        border-radius: 50%;
+        font-size: 1.2rem;
         font-weight: 700;
-        font-size: 0.9rem;
-        flex-shrink: 0;
-        transition: all 0.2s ease;
+        color: white;
+        box-shadow: 0 3px 10px rgba(255, 156, 0, 0.4);
     }
 
     .option-text {
         color: #333;
-        line-height: 1.4;
-        transition: all 0.2s ease;
-    }
-
-    .quiz-actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 10px;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .btn-back,
-    .btn-submit {
-        display: inline-block;
-        padding: 14px 30px;
-        border-radius: 25px;
-        text-decoration: none;
-        font-weight: 600;
         font-size: 1rem;
-        transition: all 0.3s ease;
+        line-height: 1.5;
+        margin-top: 10px;
+    }
+
+    .feedback-icon {
+        display: none;
+        margin-top: 15px;
+        font-size: 3rem;
+    }
+
+    /* Selected and feedback states */
+    .option-card.selected {
+        cursor: default;
+    }
+
+    .option-card.correct .feedback-icon {
+        display: block;
+        color: #4CAF50;
+    }
+
+    .option-card.correct .feedback-icon::before {
+        content: '✓';
+    }
+
+    .option-card.wrong .feedback-icon {
+        display: block;
+        color: #f44336;
+    }
+
+    .option-card.wrong .feedback-icon::before {
+        content: '✕';
+    }
+
+    .option-card.disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    /* Next Button */
+    .btn-next-question {
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #FF9C00 0%, #F0B92F 100%);
+        border: 3px solid #1B5AA1;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 156, 0, 0.5);
+        z-index: 1000;
     }
 
-    .btn-back {
-        background: rgba(255, 255, 255, 0.9);
+    .btn-next-question:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(255, 156, 0, 0.6);
+    }
+
+    .btn-next-question svg {
         color: #1B5AA1;
-        border: 2px solid #1B5AA1;
     }
 
-    .btn-back:hover {
-        background: #1B5AA1;
-        color: white;
+    /* Background transition for wrong answer */
+    body.wrong-answer-bg {
+        background: linear-gradient(to bottom, #FF9C00, #F0A500, #D88C00) !important;
+        transition: background 0.5s ease;
     }
 
-    .btn-submit {
-        background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
-        color: white;
-        border: none;
-        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-    }
-
-    .btn-submit:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .options-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
     }
 
     @media (max-width: 768px) {
-        .quiz-content {
+        .quiz-content-new {
             padding: 15px;
             margin-top: 100px;
         }
 
-        .question-card {
-            padding: 20px;
+        .question-box {
+            padding: 25px;
+            min-height: 120px;
         }
 
-        .quiz-actions {
-            flex-direction: column;
+        .question-text {
+            font-size: 1.1rem;
         }
 
-        .btn-back,
-        .btn-submit {
-            width: 100%;
-            text-align: center;
+        .options-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .option-card {
+            min-height: 120px;
+            padding: 25px 15px;
+        }
+
+        .btn-next-question {
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
         }
     }
 </style>
+@endpush
+
+@push('scripts')
+<script src="{{ asset('js/quiz-navigation.js') }}"></script>
 @endpush
