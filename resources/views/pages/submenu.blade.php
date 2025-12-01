@@ -88,9 +88,6 @@
 
         <button class="nav-btn nav-right" aria-label="next">&#10095;</button>
     </div>
-<!--
-    {{-- Ornamen garis putih di kanan bawah --}}
-    <img src="{{ asset('images/Group 1.png') }}" class="bottom-ornamen" alt="ornamen bottom"> -->
 
 @endsection
 

@@ -7,7 +7,7 @@
 @section('content')
 <div class="smkk-container kd-page">
 
-    <button class="btn-back">
+    <button class="btn-back" onclick="window.history.back()">
         <img src="{{ asset('images/icon/back.png') }}" alt="Kembali">
     </button>
 

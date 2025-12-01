@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Center the active card
         const cardWidth = cards[0].offsetWidth;
-        const gap = 28; // Match CSS gap
+        const gap = 32; // Match CSS gap value (slider.css:21)
         const offset = currentIndex * (cardWidth + gap);
         track.style.transform = `translateX(-${offset}px)`;
 
