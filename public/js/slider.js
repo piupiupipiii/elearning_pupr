@@ -18,29 +18,33 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateSlider() {
         // Remove all size classes
         cards.forEach(card => {
-            card.classList.remove('size-large', 'size-small');
+            card.classList.remove('size-large', 'size-medium', 'size-small', 'size-hidden');
         });
 
         // Add size classes based on position
         cards.forEach((card, index) => {
-            if (index === currentIndex) {
+            if (index < currentIndex) {
+                card.classList.add('size-hidden');
+            } else if (index === currentIndex) {
                 card.classList.add('size-large');
+            } else if (index === currentIndex + 1) {
+                card.classList.add('size-medium');
             } else {
                 card.classList.add('size-small');
             }
         });
 
         // Update left panel content
-        const activeCard = cards[currentIndex];
-        if (activeCard && leftTitle && leftSubtitle && leftDesc) {
-            leftTitle.textContent = activeCard.dataset.title || '';
-            leftSubtitle.textContent = activeCard.dataset.subtitle || '';
-            leftDesc.textContent = activeCard.dataset.desc || '';
+        const currentCard = cards[currentIndex];
+        if (currentCard && leftTitle && leftSubtitle && leftDesc) {
+            leftTitle.textContent = currentCard.dataset.title || '';
+            leftSubtitle.textContent = currentCard.dataset.subtitle || '';
+            leftDesc.textContent = currentCard.dataset.desc || '';
 
             // Update Mulai button
             if (btnMulai) {
-                const isLocked = activeCard.dataset.locked === 'true';
-                const href = activeCard.getAttribute('href');
+                const isLocked = currentCard.dataset.locked === 'true';
+                const href = currentCard.getAttribute('href');
 
                 if (isLocked || !href || href === 'javascript:void(0)') {
                     btnMulai.style.display = 'none';
@@ -52,8 +56,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Center the active card
-        const cardWidth = cards[0].offsetWidth;
-        const gap = 32; // Match CSS gap value (slider.css:21)
+        const cardWidth = 320; // Fixed card width
+        const gap = 20; // Match CSS gap value
         const offset = currentIndex * (cardWidth + gap);
         track.style.transform = `translateX(-${offset}px)`;
 

@@ -19,17 +19,11 @@
         @else
             <!-- User Icon: Links to login page -->
             <a href="{{ route('login') }}">
-                <img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="User" class="icon">
+                <img src="{{ asset('images/icon/pro.png') }}" alt="User" class="icon">
             </a>
         @endauth
 
         <!-- Question Icon: No-op for now -->
         <img src="https://cdn-icons-png.flaticon.com/512/4379/4379546.png" alt="Question" class="icon">
-
-        <!-- Audio Icon: No-op for now -->
-        <img src="https://cdn-icons-png.flaticon.com/512/786/786407.png" alt="Audio" class="icon">
     </div>
-
-    <!-- Ornamen di pojok kanan atas -->
-    <img src="{{ asset('images/ornamen-atas.png') }}" alt="Ornamen" class="ornamen-kanan">
 </header>

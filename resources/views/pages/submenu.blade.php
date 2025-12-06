@@ -40,6 +40,11 @@
         <a href="#" class="btn-start" id="btn-mulai" style="display: none;">Mulai</a>
     </div>
 
+    {{-- Home button (bottom-left corner) --}}
+    <a href="{{ route('beranda') }}" class="home-btn" title="Kembali ke Beranda Modul">
+        <img src="{{ asset('images/icon/home.png') }}" alt="home">
+    </a>
+
     {{-- KANAN: slider kartu --}}
     <div class="slider-area">
         <button class="nav-btn nav-left" aria-label="previous">&#10094;</button>
@@ -51,10 +56,11 @@
                     @php
                         $status = $userProgress[$material->id] ?? null;
                         $isFirst = $index === 0;
+                        $isSecond = $index === 1;
                         $isLocked = $status === null;
                         $isDone = $status === 'done';
                         $isUnlocked = $status === 'unlocked';
-                        $cardSize = $isFirst ? 'size-large' : 'size-small';
+                        $cardSize = $isFirst ? 'size-large' : ($isSecond ? 'size-medium' : 'size-small');
                         $href = $isLocked ? 'javascript:void(0)' : route('materi.show', $material);
                     @endphp
 

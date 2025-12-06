@@ -2,6 +2,33 @@
 
 @section('title', 'DIVISI 1 UMUM - Penerapan SMKK')
 
+@push('styles')
+<style>
+    .intro-illustration {
+        background: none;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+        max-width: none;
+        position: absolute;
+        right: 80px;
+        top: 100px;
+    }
+    .intro-illustration::after {
+        display: none;
+    }
+    .intro-illustration img {
+        width: 305px;
+        height: 455px;
+        object-fit: contain;
+    }
+    .btn-wide {
+        width: 280px;
+        height: 55px;
+    }
+</style>
+@endpush
+
 @section('content')
 <div class="smkk-container">
     <div class="text-section">
@@ -11,12 +38,12 @@
         <p class="desc">Pelatihan Spesifikasi Umum untuk Pekerjaan Konstruksi Jalan dan Jembatan</p>
 
         <a href="{{ route('beranda') }}">
-            <button class="btn-yellow">Mulai Pembelajaran</button>
+            <button class="btn-yellow btn-wide">Mulai Pembelajaran</button>
         </a>
 
     </div>
 
-    <div class="illustration-section">
+    <div class="illustration-section intro-illustration">
         <img src="{{ asset('images/kontraktor.png') }}" alt="Ilustrasi Konstruksi">
     </div>
 
