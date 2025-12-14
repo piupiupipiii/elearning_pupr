@@ -13,50 +13,84 @@ class MaterialSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create sample materials with real YouTube videos about construction safety
+        // Defined materials (5 items)
         $materials = [
             [
                 'section_number' => '1.1',
                 'title' => 'Ringkasan Pekerjaan',
                 'description' => 'Video ini menjelaskan ringkasan pekerjaan dan pengenalan dasar tentang Sistem Manajemen Keselamatan Konstruksi (SMKK).',
-                'youtube_url' => 'dQw4w9WgXcQ', // Replace with actual video ID
+                'youtube_url' => 'dQw4w9WgXcQ',
                 'order' => 1,
             ],
             [
                 'section_number' => '1.2',
                 'title' => 'Mobilisasi',
                 'description' => 'Penjelasan lengkap tentang proses mobilisasi peralatan dan tenaga kerja di lokasi konstruksi.',
-                'youtube_url' => 'jNQXAC9IVRw', // Replace with actual video ID
+                'youtube_url' => 'jNQXAC9IVRw',
                 'order' => 2,
             ],
             [
                 'section_number' => '1.3',
                 'title' => 'Pengawasan Lapangan',
                 'description' => 'Tahapan pengawasan lapangan dan prosedur keselamatan yang harus dipatuhi selama pelaksanaan pekerjaan.',
-                'youtube_url' => '9bZkp7q19f0', // Replace with actual video ID
+                'youtube_url' => '9bZkp7q19f0',
                 'order' => 3,
             ],
             [
                 'section_number' => '1.4',
                 'title' => 'Peralatan Keselamatan',
                 'description' => 'Mengenal berbagai jenis peralatan keselamatan kerja (APD) yang wajib digunakan di lokasi konstruksi.',
-                'youtube_url' => 'kJQP7kiw5Fk', // Replace with actual video ID
+                'youtube_url' => 'kJQP7kiw5Fk',
                 'order' => 4,
             ],
             [
                 'section_number' => '1.5',
                 'title' => 'Penanganan Darurat',
                 'description' => 'Prosedur penanganan situasi darurat dan evakuasi di lokasi konstruksi.',
-                'youtube_url' => 'RgKAFK5djSk', // Replace with actual video ID
+                'youtube_url' => 'RgKAFK5djSk',
                 'order' => 5,
             ],
         ];
 
+        // Process defined materials (1-5)
         foreach ($materials as $materialData) {
-            $material = Material::create($materialData);
+            $material = Material::firstOrCreate(
+                ['order' => $materialData['order']],
+                $materialData
+            );
 
-            // Create questions for each material
-            $this->createQuestionsForMaterial($material);
+            // Create questions if not exists
+            if ($material->questions()->count() == 0) {
+                $this->createQuestionsForMaterial($material);
+            }
+        }
+
+        // Generate remaining materials (6-22)
+        for ($i = 6; $i <= 22; $i++) {
+            $material = Material::firstOrCreate(
+                ['order' => $i],
+                [
+                    'section_number' => '1.' . $i,
+                    'title' => 'Materi Pembelajaran ' . $i,
+                    'description' => 'Deskripsi untuk materi pembelajaran ke-' . $i . '.',
+                    'youtube_url' => 'dQw4w9WgXcQ', // Placeholder
+                ]
+            );
+            
+            // Optional: Create dummy questions for these new materials too
+            if ($material->questions()->count() == 0) {
+                 Question::create([
+                    'material_id' => $material->id,
+                    'question_text' => 'Contoh pertanyaan untuk materi ' . $i . '?',
+                    'options' => [
+                        'A' => 'Pilihan A',
+                        'B' => 'Pilihan B',
+                        'C' => 'Pilihan C',
+                        'D' => 'Pilihan D',
+                    ],
+                    'correct_answer' => 'A',
+                ]);
+            }
         }
     }
 

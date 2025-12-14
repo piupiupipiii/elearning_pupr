@@ -52,6 +52,10 @@ class QuizController extends Controller
         $answersJson = $request->input('answers');
         $answers = json_decode($answersJson, true);
 
+        // Initialize score counters
+        $correctAnswersCount = 0;
+        $totalQuestionsCount = $material->questions->count();
+
         if ($answers && is_array($answers)) {
             // Save all answers from JSON format
             foreach ($answers as $questionId => $selectedAnswer) {
@@ -60,21 +64,44 @@ class QuizController extends Controller
                     'question_id' => $questionId,
                     'selected_answer' => $selectedAnswer,
                 ]);
+
+                // Check if answer is correct
+                $question = Question::find($questionId);
+                if ($question && $question->correct_answer === $selectedAnswer) {
+                    $correctAnswersCount++;
+                }
             }
         } else {
-            // Fallback to old format for backward compatibility
+            // Fallback to old format
             $questions = $material->questions;
             foreach ($questions as $question) {
                 $answerKey = 'question_' . $question->id;
                 if ($request->has($answerKey)) {
+                    $selectedAnswer = $request->input($answerKey);
                     UserAnswer::create([
                         'user_id' => $user->id,
                         'question_id' => $question->id,
-                        'selected_answer' => $request->input($answerKey),
+                        'selected_answer' => $selectedAnswer,
                     ]);
+
+                    if ($question->correct_answer === $selectedAnswer) {
+                        $correctAnswersCount++;
+                    }
                 }
             }
         }
+
+        // Calculate score
+        $score = ($totalQuestionsCount > 0) ? round(($correctAnswersCount / $totalQuestionsCount) * 100) : 0;
+
+        // Save Score
+        \App\Models\QuizScore::create([
+            'user_id' => $user->id,
+            'material_id' => $material->id,
+            'score' => $score,
+            'correct_answers' => $correctAnswersCount,
+            'total_questions' => $totalQuestionsCount,
+        ]);
 
         // Mark current material as done
         $progress->update(['status' => 'done']);

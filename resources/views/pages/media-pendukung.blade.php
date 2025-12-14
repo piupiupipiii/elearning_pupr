@@ -22,36 +22,87 @@
     </div>
 
     {{-- MEDIA CONTAINER --}}
-    <div class="media-container">
-        @forelse($media as $item)
-            <div class="media-card">
-                <div class="media-icon">
-                    <img src="{{ asset('images/icon/folders.png') }}" alt="{{ $item->file_type }}">
-                </div>
+    <div class="media-container-grid">
+        
+        {{-- Item 1 --}}
+        <a href="https://binamarga.pu.go.id/uploads/files/1772/skh-1122-sistem-manajemen-keselamatan-konstruksi.pdf" target="_blank" class="book-card">
+            <div class="book-cover">
+                <div class="book-spine"></div>
+                <div class="book-content">
+                    <div class="book-header">
+                        <p class="agency-name">KEMENTERIAN PEKERJAAN UMUM DAN PERUMAHAN RAKYAT</p>
+                        <p class="agency-unit">DIREKTORAT JENDERAL BINA MARGA</p>
+                    </div>
+                    
+                    <div class="book-logo">
+                        <img src="{{ asset('images/icon/pupr.png') }}" alt="Logo PUPR">
+                    </div>
 
-                <div class="media-info">
-                    <h3>{{ $item->title }}</h3>
-                    <p class="media-description">{{ $item->description ?? 'Tidak ada deskripsi' }}</p>
-                    <div class="media-meta">
-                        <span class="file-type">{{ strtoupper($item->file_type) }}</span>
-                        <span class="file-size">{{ $item->formatted_size }}</span>
+                    <div class="book-title-section">
+                        <h2 class="book-title">SKH-1.1.22</h2>
+                        <h3 class="book-subtitle">SISTEM MANAJEMEN KESELAMATAN KONSTRUKSI</h3>
+                    </div>
+                    
+                    <div class="book-footer">
+                        <span class="book-year">2021</span>
                     </div>
                 </div>
+            </div>
+            <div class="book-shadow"></div>
+        </a>
 
-                <a href="{{ route('media.download', $item) }}" class="btn-download">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 13L6 9H8V4H12V9H14L10 13Z" fill="currentColor"/>
-                        <path d="M17 16H3V11H5V14H15V11H17V16Z" fill="currentColor"/>
-                    </svg>
-                    Download
-                </a>
+        {{-- Item 2 --}}
+        <a href="https://peraturan.bpk.go.id/Details/159697/permen-pupr-no-21prtm2019-tahun-2019" target="_blank" class="book-card">
+            <div class="book-cover">
+                <div class="book-spine"></div>
+                <div class="book-content">
+                    <div class="book-header">
+                        <p class="agency-name">KEMENTERIAN PEKERJAAN UMUM DAN PERUMAHAN RAKYAT</p>
+                    </div>
+                    
+                    <div class="book-logo">
+                        <img src="{{ asset('images/icon/pupr.png') }}" alt="Logo PUPR">
+                    </div>
+
+                    <div class="book-title-section">
+                        <h2 class="book-title">PERMEN PUPR NO. 21</h2>
+                        <h3 class="book-subtitle">PEDOMAN SISTEM MANAJEMEN KESELAMATAN KONSTRUKSI</h3>
+                    </div>
+
+                    <div class="book-footer">
+                        <span class="book-year">2019</span>
+                    </div>
+                </div>
             </div>
-        @empty
-            <div class="empty-state">
-                <img src="{{ asset('images/icon/folders.png') }}" alt="No Media" style="width: 100px; opacity: 0.5;">
-                <p>Belum ada media pendukung yang tersedia.</p>
+            <div class="book-shadow"></div>
+        </a>
+
+        {{-- Item 3 --}}
+        <a href="https://peraturan.bpk.go.id/Details/216875/permen-pupr-no-10-tahun-2021" target="_blank" class="book-card">
+            <div class="book-cover">
+                <div class="book-spine"></div>
+                <div class="book-content">
+                    <div class="book-header">
+                        <p class="agency-name">KEMENTERIAN PEKERJAAN UMUM DAN PERUMAHAN RAKYAT</p>
+                    </div>
+                    
+                    <div class="book-logo">
+                        <img src="{{ asset('images/icon/pupr.png') }}" alt="Logo PUPR">
+                    </div>
+
+                    <div class="book-title-section">
+                        <h2 class="book-title">PERMEN PUPR NO. 10</h2>
+                        <h3 class="book-subtitle">PEDOMAN SISTEM MANAJEMEN KESELAMATAN KONSTRUKSI</h3>
+                    </div>
+
+                    <div class="book-footer">
+                        <span class="book-year">2021</span>
+                    </div>
+                </div>
             </div>
-        @endforelse
+            <div class="book-shadow"></div>
+        </a>
+
     </div>
 
 </div>

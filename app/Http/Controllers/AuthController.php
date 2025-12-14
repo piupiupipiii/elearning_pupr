@@ -29,7 +29,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/beranda');
+            return redirect()->intended(route('judul'));
         }
 
         return back()->withErrors([
@@ -62,9 +62,8 @@ class AuthController extends Controller
             'password' => $validated['password'],
         ]);
 
-        Auth::login($user);
-
-        return redirect('/beranda');
+        // Don't auto-login, redirect to login page instead
+        return redirect()->route('login')->with('success', 'Akun berhasil dibuat! Silakan login.');
     }
 
     /**

@@ -1,4 +1,3 @@
-
 body.main-bg {
     background: linear-gradient(to bottom, #297BD8, #1B5AA1, #183658);
     color: white;
@@ -36,18 +35,10 @@ body.main-bg {
     cursor: pointer;
 }
 
-.ornamen-kanan {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    width: 180px;
-    opacity: 0.5;
-    pointer-events: none;
-    z-index: 0;
-}
+
 
 body {
-  overflow-x: hidden !important;
+    overflow-x: hidden !important;
     /* height: 100%;
     margin: 0;
     padding: 0; */
@@ -108,7 +99,7 @@ body {
     border-radius: 12px;
     margin-top: 25px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     font-size: 18px;
 }
@@ -127,44 +118,34 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 460px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    max-width: 420px;
     position: relative;
 }
 
 .illustration-section::after {
     content: '';
     position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 4px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
     background: white;
     border-radius: 2px;
 }
 
 .illustration-section img {
-    width: 480px;
+    width: 400px;
     height: auto;
     object-fit: contain;
 }
 
-.ornamen-bawah {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 340px;
-    opacity: 0.8;
-    pointer-events: none;
-    z-index: 0;
+
+.header {
+    position: relative;
+    z-index: 50;
 }
 
-.ornamen-bawah img {
-    width: 100%;
-    height: auto;
-}
-
-.header,
 .content,
 .smkk-container {
     position: relative;
@@ -185,9 +166,10 @@ body {
     background: white;
     border-radius: 8px;
     padding: 12px 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     min-width: 180px;
-    z-index: 100;
+    min-width: 180px;
+    z-index: 10000;
 }
 
 .user-dropdown.show {
@@ -203,18 +185,57 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.user-dropdown form button {
+.user-dropdown .logout-button,
+.user-dropdown button.logout-button,
+button.logout-button {
     width: 100%;
-    background: #dc3545;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
+    background: #dc3545 !important;
+    color: white !important;
+    border: none !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    position: relative !important;
+    z-index: 10001 !important;
+    transition: all 0.3s ease !important;
+    pointer-events: auto !important;
+    display: block !important;
 }
 
-.user-dropdown form button:hover {
-    background: #c82333;
+.user-dropdown .profile-button {
+    display: block;
+    width: 100%;
+    background: #3B82F6 !important;
+    /* Blue */
+    color: white !important;
+    border: none !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    position: relative !important;
+    z-index: 10001 !important;
+    transition: all 0.3s ease !important;
+    pointer-events: auto !important;
+    text-align: center;
+    text-decoration: none !important;
+    margin-bottom: 8px;
+    /* Spacing between profile and logout */
+    box-sizing: border-box;
+    /* Fix padding width issue */
+}
+
+.user-dropdown .profile-button:hover {
+    background: #2563EB !important;
+    transform: translateY(-1px) !important;
+}
+
+.user-dropdown .logout-button:hover,
+.user-dropdown button.logout-button:hover,
+button.logout-button:hover {
+    background: #c82333 !important;
+    transform: translateY(-1px) !important;
 }

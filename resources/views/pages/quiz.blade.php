@@ -6,8 +6,7 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- Ornamen kuning di kanan atas --}}
-    <img src="{{ asset('images/line-10.png') }}" class="top-ornamen" alt="ornamen top">
+
 
     {{-- Judul halaman di tengah --}}
     <div class="submenu-header">

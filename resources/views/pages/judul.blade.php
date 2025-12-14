@@ -2,6 +2,10 @@
 
 @section('title', 'DIVISI 1 UMUM - Penerapan SMKK')
 
+@push('styles')
+<link rel="stylesheet" href="{{ asset('css/ornamen.css') }}">
+@endpush
+
 @section('content')
 <div class="smkk-container">
     <div class="text-section">
@@ -11,12 +15,12 @@
         <p class="desc">Pelatihan Spesifikasi Umum untuk Pekerjaan Konstruksi Jalan dan Jembatan</p>
 
         @auth
-            <a href="{{ route('intro') }}">
+            <a href="{{ route('beranda') }}">
                 <button class="btn-yellow">Mulai</button>
             </a>
         @else
-            <a href="{{ route('login') }}">
-                <button class="btn-yellow">Mulai</button>
+            <a href="{{ route('signup') }}">
+                <button class="btn-yellow">Daftar</button>
             </a>
         @endauth 
 

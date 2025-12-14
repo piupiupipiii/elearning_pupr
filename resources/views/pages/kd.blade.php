@@ -26,7 +26,7 @@
         <div class="kd-box kd-box-1"></div>
         <div class="kd-box kd-box-3"></div>
 
-        <img src="{{ asset('images/kd.png') }}" alt="gambar" class="kd-image">
+        <img src="{{ asset('images/pupr.jpg') }}" alt="gambar" class="kd-image">
 
     </div>
 

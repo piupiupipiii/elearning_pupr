@@ -25,6 +25,9 @@ Route::get('/kd', function (){
 
 // Protected routes - require authentication
 Route::middleware('auth')->group(function () {
+    // Profile
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
+
     // Submenu / Material list
     Route::get('/submenu', [MaterialController::class, 'index'])->name('submenu');
 
