@@ -18,17 +18,17 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateSlider() {
         // Remove all size classes
         cards.forEach(card => {
-            card.classList.remove('size-large', 'size-medium', 'size-small', 'size-hidden');
+            card.classList.remove('size-large', 'size-medium', 'size-medium2', 'size-small');
         });
 
-        // Add size classes based on position
+        // Add size classes based on position relative to currentIndex
         cards.forEach((card, index) => {
-            if (index < currentIndex) {
-                card.classList.add('size-hidden');
-            } else if (index === currentIndex) {
+            if (index === currentIndex) {
                 card.classList.add('size-large');
-            } else if (index === currentIndex + 1) {
+            } else if (index === currentIndex - 1 || index === currentIndex + 1) {
                 card.classList.add('size-medium');
+            } else if (index === currentIndex - 2 || index === currentIndex + 2) {
+                card.classList.add('size-medium2');
             } else {
                 card.classList.add('size-small');
             }
@@ -55,10 +55,25 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Center the active card
-        const cardWidth = 320; // Fixed card width
-        const gap = 20; // Match CSS gap value
-        const offset = currentIndex * (cardWidth + gap);
+        // Geser track agar card aktif selalu di tengah viewport
+        // Geser track agar card aktif selalu di kiri viewport (previous hidden)
+        const gap = 32; // gap CSS
+        let offset = 0;
+
+        // Hitung lebar total kartu sebelum currentIndex
+        for (let i = 0; i < currentIndex; i++) {
+            let width = 220; // size-small default (was 200)
+
+            if (i === currentIndex - 1) {
+                width = 260; // size-medium (was 240)
+            } else if (i === currentIndex - 2) {
+                width = 240; // size-medium2 (was 220)
+            }
+            // Note: size-large (now 300) hanya untuk currentIndex, jadi tidak masuk hitungan offset previous
+
+            offset += width + gap;
+        }
+
         track.style.transform = `translateX(-${offset}px)`;
 
         // Update button states

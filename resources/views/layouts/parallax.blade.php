@@ -12,6 +12,8 @@
 
         @include('partials.parallax')
 
+        <img src="{{ asset('images/line-10.png') }}" class="top-right-ornamen" alt="ornamen top right">
+
         <img src="{{ asset('images/Group 1.png') }}" class="bottom-ornamen" alt="ornamen bottom">
 
         {{-- konten halaman yang duduk di atas background --}}

@@ -1,0 +1,15 @@
+/* Ornamen Kanan Atas */
+.ornamen-atas {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100px;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.ornamen-atas img {
+    width: 100%;
+    height: auto;
+}

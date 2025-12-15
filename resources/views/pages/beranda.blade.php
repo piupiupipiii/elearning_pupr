@@ -9,9 +9,11 @@
 
     {{-- HEADER: Back + Judul --}}
     <div class="header-row">
-        <button class="btn-back" onclick="window.history.back()">
-            <img src="{{ asset('images/icon/back.png') }}" alt="Kembali">
-        </button>
+        <a href="{{ route('judul') }}">
+            <button class="btn-back">
+                <img src="{{ asset('images/icon/back.png') }}" alt="Kembali">
+            </button>
+        </a>
 
         <div class="judul-wrapper">
             <h1 class="judul">Beranda Modul</h1>

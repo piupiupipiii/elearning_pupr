@@ -6,7 +6,12 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="stylesheet" href="{{ asset('css/ornamen-atas.css') }}">
 
+    {{-- Ornamen Kanan Atas --}}
+    <div class="ornamen-atas">
+        <img src="{{ asset('images/ornamen-atas.png') }}" alt="Ornamen">
+    </div>
 
     {{-- Judul halaman di tengah --}}
     <div class="submenu-header">

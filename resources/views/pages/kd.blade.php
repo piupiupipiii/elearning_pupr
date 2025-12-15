@@ -7,9 +7,11 @@
 @section('content')
 <div class="smkk-container kd-page">
 
-    <button class="btn-back" onclick="window.history.back()">
-        <img src="{{ asset('images/icon/back.png') }}" alt="Kembali">
-    </button>
+    <a href="{{ route('beranda') }}">
+        <button class="btn-back">
+            <img src="{{ asset('images/icon/back.png') }}" alt="Kembali">
+        </button>
+    </a>
 
     {{-- KIRI: TEKS --}}
     <div class="text-section">

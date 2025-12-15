@@ -4,9 +4,14 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/ornamen.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ornamen-atas.css') }}">
 @endpush
 
 @section('content')
+<div class="ornamen-atas">
+    <img src="{{ asset('images/ornamen-atas.png') }}" alt="Ornamen">
+</div>
+
 <div class="smkk-container">
     <div class="text-section">
         <h2>DIVISI 1 UMUM</h2>

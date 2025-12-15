@@ -4,6 +4,18 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/media-pendukung.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ornamen.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ornamen-atas.css') }}">
+
+{{-- Ornamen Kiri Bawah --}}
+<div class="ornamen-bawah">
+    <img src="{{ asset('images/Group 4.png') }}" alt="Ornamen">
+</div>
+
+{{-- Ornamen Kanan Atas --}}
+<div class="ornamen-atas">
+    <img src="{{ asset('images/ornamen-atas.png') }}" alt="Ornamen">
+</div>
 
 <div class="content-wrapper">
 
@@ -24,84 +36,93 @@
     {{-- MEDIA CONTAINER --}}
     <div class="media-container-grid">
         
-        {{-- Item 1 --}}
-        <a href="https://binamarga.pu.go.id/uploads/files/1772/skh-1122-sistem-manajemen-keselamatan-konstruksi.pdf" target="_blank" class="book-card">
-            <div class="book-cover">
-                <div class="book-spine"></div>
-                <div class="book-content">
-                    <div class="book-header">
-                        <p class="agency-name">KEMENTERIAN PEKERJAAN UMUM DAN PERUMAHAN RAKYAT</p>
-                        <p class="agency-unit">DIREKTORAT JENDERAL BINA MARGA</p>
-                    </div>
-                    
-                    <div class="book-logo">
-                        <img src="{{ asset('images/icon/pupr.png') }}" alt="Logo PUPR">
-                    </div>
+        {{-- Item 1 (Kiri - Besar) --}}
+        <div class="book-wrapper book-left">
+            <img src="{{ asset('images/bingkai.png') }}" alt="Bingkai" class="book-frame">
+            <a href="https://binamarga.pu.go.id/uploads/files/1772/skh-1122-sistem-manajemen-keselamatan-konstruksi.pdf" target="_blank" class="book-card">
+                <div class="book-cover">
+                    <div class="book-spine"></div>
+                    <div class="book-content">
+                        <div class="book-header">
+                            <p class="agency-name">KEMENTERIAN PEKERJAAN UMUM DAN PERUMAHAN RAKYAT</p>
+                            <p class="agency-unit">DIREKTORAT JENDERAL BINA MARGA</p>
+                        </div>
+                        
+                        <div class="book-logo">
+                            <img src="{{ asset('images/icon/pupr.png') }}" alt="Logo PUPR">
+                        </div>
 
-                    <div class="book-title-section">
-                        <h2 class="book-title">SKH-1.1.22</h2>
-                        <h3 class="book-subtitle">SISTEM MANAJEMEN KESELAMATAN KONSTRUKSI</h3>
-                    </div>
-                    
-                    <div class="book-footer">
-                        <span class="book-year">2021</span>
+                        <div class="book-title-section">
+                            <h2 class="book-title">SKH-1.1.22</h2>
+                            <h3 class="book-subtitle">SISTEM MANAJEMEN KESELAMATAN KONSTRUKSI</h3>
+                        </div>
+                        
+                        <div class="book-footer">
+                            <span class="book-year">2021</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="book-shadow"></div>
-        </a>
+                <div class="book-shadow"></div>
+            </a>
+        </div>
 
-        {{-- Item 2 --}}
-        <a href="https://peraturan.bpk.go.id/Details/159697/permen-pupr-no-21prtm2019-tahun-2019" target="_blank" class="book-card">
-            <div class="book-cover">
-                <div class="book-spine"></div>
-                <div class="book-content">
-                    <div class="book-header">
-                        <p class="agency-name">KEMENTERIAN PEKERJAAN UMUM DAN PERUMAHAN RAKYAT</p>
-                    </div>
-                    
-                    <div class="book-logo">
-                        <img src="{{ asset('images/icon/pupr.png') }}" alt="Logo PUPR">
-                    </div>
+        {{-- Item 2 (Tengah - Kecil) --}}
+        <div class="book-wrapper book-center">
+            <img src="{{ asset('images/bingkai.png') }}" alt="Bingkai" class="book-frame">
+            <a href="https://peraturan.bpk.go.id/Details/159697/permen-pupr-no-21prtm2019-tahun-2019" target="_blank" class="book-card">
+                <div class="book-cover">
+                    <div class="book-spine"></div>
+                    <div class="book-content">
+                        <div class="book-header">
+                            <p class="agency-name">KEMENTERIAN PEKERJAAN UMUM DAN PERUMAHAN RAKYAT</p>
+                        </div>
+                        
+                        <div class="book-logo">
+                            <img src="{{ asset('images/icon/pupr.png') }}" alt="Logo PUPR">
+                        </div>
 
-                    <div class="book-title-section">
-                        <h2 class="book-title">PERMEN PUPR NO. 21</h2>
-                        <h3 class="book-subtitle">PEDOMAN SISTEM MANAJEMEN KESELAMATAN KONSTRUKSI</h3>
-                    </div>
+                        <div class="book-title-section">
+                            <h2 class="book-title">PERMEN PUPR NO. 21</h2>
+                            <h3 class="book-subtitle">PEDOMAN SISTEM MANAJEMEN KESELAMATAN KONSTRUKSI</h3>
+                        </div>
 
-                    <div class="book-footer">
-                        <span class="book-year">2019</span>
+                        <div class="book-footer">
+                            <span class="book-year">2019</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="book-shadow"></div>
-        </a>
+                <div class="book-shadow"></div>
+            </a>
+        </div>
 
-        {{-- Item 3 --}}
-        <a href="https://peraturan.bpk.go.id/Details/216875/permen-pupr-no-10-tahun-2021" target="_blank" class="book-card">
-            <div class="book-cover">
-                <div class="book-spine"></div>
-                <div class="book-content">
-                    <div class="book-header">
-                        <p class="agency-name">KEMENTERIAN PEKERJAAN UMUM DAN PERUMAHAN RAKYAT</p>
-                    </div>
-                    
-                    <div class="book-logo">
-                        <img src="{{ asset('images/icon/pupr.png') }}" alt="Logo PUPR">
-                    </div>
+        {{-- Item 3 (Kanan - Besar) --}}
+        <div class="book-wrapper book-right">
+            <img src="{{ asset('images/bingkai.png') }}" alt="Bingkai" class="book-frame">
+            <a href="https://peraturan.bpk.go.id/Details/216875/permen-pupr-no-10-tahun-2021" target="_blank" class="book-card">
+                <div class="book-cover">
+                    <div class="book-spine"></div>
+                    <div class="book-content">
+                        <div class="book-header">
+                            <p class="agency-name">KEMENTERIAN PEKERJAAN UMUM DAN PERUMAHAN RAKYAT</p>
+                        </div>
+                        
+                        <div class="book-logo">
+                            <img src="{{ asset('images/icon/pupr.png') }}" alt="Logo PUPR">
+                        </div>
 
-                    <div class="book-title-section">
-                        <h2 class="book-title">PERMEN PUPR NO. 10</h2>
-                        <h3 class="book-subtitle">PEDOMAN SISTEM MANAJEMEN KESELAMATAN KONSTRUKSI</h3>
-                    </div>
+                        <div class="book-title-section">
+                            <h2 class="book-title">PERMEN PUPR NO. 10</h2>
+                            <h3 class="book-subtitle">PEDOMAN SISTEM MANAJEMEN KESELAMATAN KONSTRUKSI</h3>
+                        </div>
 
-                    <div class="book-footer">
-                        <span class="book-year">2021</span>
+                        <div class="book-footer">
+                            <span class="book-year">2021</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="book-shadow"></div>
-        </a>
+                <div class="book-shadow"></div>
+            </a>
+        </div>
 
     </div>
 

@@ -23,15 +23,15 @@ body.main-bg {
 
 .icon-container {
     position: absolute;
-    right: 80px;
+    right: 120px;
     top: 40px;
     display: flex;
-    gap: 25px;
+    gap: 15px;
 }
 
 .icon {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     cursor: pointer;
 }
 

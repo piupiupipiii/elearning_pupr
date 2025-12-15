@@ -138,6 +138,36 @@ class MaterialSeeder extends Seeder
                     ],
                     'correct_answer' => 'C',
                 ],
+                [
+                    'question_text' => 'Dokumen dasar hukum penerapan SMKK adalah?',
+                    'options' => [
+                        'A' => 'Permen PUPR No. 21 Tahun 2019',
+                        'B' => 'UU No. 1 Tahun 1970',
+                        'C' => 'PP No. 50 Tahun 2012',
+                        'D' => 'Semua benar',
+                    ],
+                    'correct_answer' => 'A',
+                ],
+                [
+                    'question_text' => 'Tujuan utama penerapan SMKK adalah?',
+                    'options' => [
+                        'A' => 'Menghindari sanksi administrasi',
+                        'B' => 'Mencegah kecelakaan konstruksi dan penyakit akibat kerja',
+                        'C' => 'Meningkatkan biaya proyek',
+                        'D' => 'Memperpanjang durasi proyek',
+                    ],
+                    'correct_answer' => 'B',
+                ],
+                [
+                    'question_text' => 'Komponen biaya penerapan SMKK harus masuk dalam?',
+                    'options' => [
+                        'A' => 'Biaya tak terduga',
+                        'B' => 'Keuntungan kontraktor',
+                        'C' => 'Daftar Kuantitas dan Harga (DKH)',
+                        'D' => 'Gaji karyawan',
+                    ],
+                    'correct_answer' => 'C',
+                ],
             ],
             '1.2' => [
                 [
@@ -159,6 +189,36 @@ class MaterialSeeder extends Seeder
                         'D' => 'Tidak perlu dokumen apapun',
                     ],
                     'correct_answer' => 'B',
+                ],
+                [
+                    'question_text' => 'Hal yang perlu diperiksa saat mobilisasi alat berat adalah?',
+                    'options' => [
+                        'A' => 'Kondisi cat alat',
+                        'B' => 'Merk alat berat',
+                        'C' => 'Sertifikat Kelayakan Alat (SIA/SILO)',
+                        'D' => 'Harga sewa alat',
+                    ],
+                    'correct_answer' => 'C',
+                ],
+                [
+                    'question_text' => 'Demobilisasi adalah kegiatan?',
+                    'options' => [
+                        'A' => 'Mendatangkan alat baru',
+                        'B' => 'Mengeluarkan alat dan tenaga kerja setelah proyek selesai',
+                        'C' => 'Memperbaiki alat rusak',
+                        'D' => 'Menambah jam kerja',
+                    ],
+                    'correct_answer' => 'B',
+                ],
+                [
+                    'question_text' => 'Mobilisasi tenaga kerja harus memperhatikan?',
+                    'options' => [
+                        'A' => 'Kompetensi dan sertifikasi pekerja',
+                        'B' => 'Asal daerah pekerja',
+                        'C' => 'Usia pekerja',
+                        'D' => 'Jenis kelamin pekerja',
+                    ],
+                    'correct_answer' => 'A',
                 ],
             ],
             '1.3' => [
@@ -182,6 +242,36 @@ class MaterialSeeder extends Seeder
                     ],
                     'correct_answer' => 'C',
                 ],
+                [
+                    'question_text' => 'Laporan harian proyek berisi informasi tentang?',
+                    'options' => [
+                        'A' => 'Cuaca, jumlah pekerja, alat, dan progress pekerjaan',
+                        'B' => 'Menu makan siang pekerja',
+                        'C' => 'Daftar gaji pekerja',
+                        'D' => 'Jadwal libur proyek',
+                    ],
+                    'correct_answer' => 'A',
+                ],
+                [
+                    'question_text' => 'Siapa yang berwenang menghentikan pekerjaan jika ditemukan kondisi tidak aman?',
+                    'options' => [
+                        'A' => 'Hanya direktur perusahaan',
+                        'B' => 'Hanya pemilik proyek',
+                        'C' => 'Petugas K3 atau Pengawas Lapangan',
+                        'D' => 'Masyarakat sekitar',
+                    ],
+                    'correct_answer' => 'C',
+                ],
+                [
+                    'question_text' => 'Safety Toolbox Meeting sebaiknya dilakukan kapan?',
+                    'options' => [
+                        'A' => 'Setiap pagi sebelum mulai bekerja',
+                        'B' => 'Seminggu sekali',
+                        'C' => 'Sebulan sekali',
+                        'D' => 'Saat ada kecelakaan saja',
+                    ],
+                    'correct_answer' => 'A',
+                ],
             ],
             '1.4' => [
                 [
@@ -198,43 +288,93 @@ class MaterialSeeder extends Seeder
                     'question_text' => 'APD wajib apa yang harus digunakan di semua area konstruksi?',
                     'options' => [
                         'A' => 'Kacamata hitam',
-                        'B' => 'Helm keselamatan dan sepatu safety',
-                        'C' => 'Jas hujan',
-                        'D' => 'Sarung tangan kulit',
+                        'B' => 'Helm keselamatan (Safety Helmet)',
+                        'C' => 'Sarung tangan kulit',
+                        'D' => 'Penutup telinga',
                     ],
                     'correct_answer' => 'B',
                 ],
                 [
-                    'question_text' => 'Siapa yang wajib menyediakan APD untuk pekerja?',
+                    'question_text' => 'Sepatu keselamatan (Safety Shoes) berfungsi untuk?',
                     'options' => [
-                        'A' => 'Pekerja sendiri',
-                        'B' => 'Pemerintah',
-                        'C' => 'Pemberi kerja/kontraktor',
-                        'D' => 'Keluarga pekerja',
+                        'A' => 'Agar terlihat rapi',
+                        'B' => 'Melindungi kaki dari benda tajam dan kejatuhan benda berat',
+                        'C' => 'Meningkatkan kecepatan berjalan',
+                        'D' => 'Menjaga kebersihan kaki',
+                    ],
+                    'correct_answer' => 'B',
+                ],
+                [
+                    'question_text' => 'Full Body Harness wajib digunakan ketika bekerja pada ketinggian di atas?',
+                    'options' => [
+                        'A' => '1 meter',
+                        'B' => '1.5 meter',
+                        'C' => '1.8 meter',
+                        'D' => '5 meter',
+                    ],
+                    'correct_answer' => 'C',
+                ],
+                [
+                    'question_text' => 'Warna helm proyek biasanya menunjukkan?',
+                    'options' => [
+                        'A' => 'Umur pekerja',
+                        'B' => 'Lamanya bekerja',
+                        'C' => 'Jabatan atau peran pekerja',
+                        'D' => 'Selera pekerja',
                     ],
                     'correct_answer' => 'C',
                 ],
             ],
             '1.5' => [
-                [
-                    'question_text' => 'Apa langkah pertama saat terjadi keadaan darurat di lokasi konstruksi?',
+                 [
+                    'question_text' => 'Langkah pertama saat terjadi keadaan darurat adalah?',
                     'options' => [
-                        'A' => 'Melanjutkan pekerjaan',
-                        'B' => 'Memberikan pertolongan pertama',
-                        'C' => 'Membunyikan alarm dan menghentikan semua pekerjaan',
-                        'D' => 'Menunggu instruksi dari kantor pusat',
-                    ],
-                    'correct_answer' => 'C',
-                ],
-                [
-                    'question_text' => 'Di mana titik kumpul evakuasi seharusnya berada?',
-                    'options' => [
-                        'A' => 'Di dalam gedung yang sedang dibangun',
-                        'B' => 'Di area terbuka yang aman dan mudah diakses',
-                        'C' => 'Di dekat gudang material',
-                        'D' => 'Di parkiran kendaraan berat',
+                        'A' => 'Panik dan berteriak',
+                        'B' => 'Tetap tenang dan amankan diri',
+                        'C' => 'Langsung pulang ke rumah',
+                        'D' => 'Mengambil foto kejadian',
                     ],
                     'correct_answer' => 'B',
+                ],
+                [
+                    'question_text' => 'Jalur evakuasi harus ditandai dengan?',
+                    'options' => [
+                        'A' => 'Rambu petunjuk arah yang jelas dan terlihat',
+                        'B' => 'Tali rafia',
+                        'C' => 'Cat semprot di tanah',
+                        'D' => 'Tidak perlu ditandai',
+                    ],
+                    'correct_answer' => 'A',
+                ],
+                [
+                    'question_text' => 'Titik Kumpul (Assembly Point) adalah?',
+                    'options' => [
+                        'A' => 'Tempat istirahat pekerja',
+                        'B' => 'Lokasi aman untuk berkumpul saat evakuasi',
+                        'C' => 'Tempat parkir alat berat',
+                        'D' => 'Gudang penyimpanan material',
+                    ],
+                    'correct_answer' => 'B',
+                ],
+                [
+                    'question_text' => 'Nomor telepon darurat yang umum dihubungi adalah?',
+                    'options' => [
+                        'A' => 'Nomor rumah sakit terdekat, pemadam kebakaran, dan polisi',
+                        'B' => 'Nomor restoran terdekat',
+                        'C' => 'Nomor teman kerja',
+                        'D' => 'Nomor operator seluler',
+                    ],
+                    'correct_answer' => 'A',
+                ],
+                 [
+                    'question_text' => 'APAR singkatan dari?',
+                    'options' => [
+                        'A' => 'Alat Pemadam Api Ringan',
+                        'B' => 'Alat Pelindung Api Ruangan',
+                        'C' => 'Anti Panas Area Rumah',
+                        'D' => 'Alat Pemisah Api Ruangan',
+                    ],
+                    'correct_answer' => 'A',
                 ],
             ],
         ];

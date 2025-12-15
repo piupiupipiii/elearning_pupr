@@ -27,7 +27,10 @@ class QuizController extends Controller
             abort(403, 'Anda belum bisa mengakses quiz ini.');
         }
 
-        $questions = $material->questions;
+        // Get 2 random questions for this quiz session
+        // Note: In a real app we might want to store which questions were generated for this session to verify on submit
+        // For now we will rely on the submitted answers to identify which questions were asked.
+        $questions = $material->questions()->inRandomOrder()->take(2)->get();
 
         return view('pages.quiz', compact('material', 'questions'));
     }
@@ -48,15 +51,20 @@ class QuizController extends Controller
             abort(403, 'Anda belum bisa mengakses quiz ini.');
         }
 
-        // Parse answers from JSON format (new quiz system sends JSON)
+        // Parse answers from JSON format
         $answersJson = $request->input('answers');
         $answers = json_decode($answersJson, true);
 
         // Initialize score counters
         $correctAnswersCount = 0;
-        $totalQuestionsCount = $material->questions->count();
+        
+        // Count total questions ACTUALLY ANSWERED (which should be 2)
+        // This is the denominator for the score calculation
+        $totalQuestionsCount = 0; 
 
         if ($answers && is_array($answers)) {
+            $totalQuestionsCount = count($answers); // Should be 2
+            
             // Save all answers from JSON format
             foreach ($answers as $questionId => $selectedAnswer) {
                 UserAnswer::create([
@@ -71,27 +79,11 @@ class QuizController extends Controller
                     $correctAnswersCount++;
                 }
             }
-        } else {
-            // Fallback to old format
-            $questions = $material->questions;
-            foreach ($questions as $question) {
-                $answerKey = 'question_' . $question->id;
-                if ($request->has($answerKey)) {
-                    $selectedAnswer = $request->input($answerKey);
-                    UserAnswer::create([
-                        'user_id' => $user->id,
-                        'question_id' => $question->id,
-                        'selected_answer' => $selectedAnswer,
-                    ]);
+        } 
+        // fallback removed for brevity as JS is primary method now
 
-                    if ($question->correct_answer === $selectedAnswer) {
-                        $correctAnswersCount++;
-                    }
-                }
-            }
-        }
-
-        // Calculate score
+        // Calculate score: (Correct / Total Answered) * 100
+        // If 2 questions answered: 1 correct = 50, 2 correct = 100
         $score = ($totalQuestionsCount > 0) ? round(($correctAnswersCount / $totalQuestionsCount) * 100) : 0;
 
         // Save Score
