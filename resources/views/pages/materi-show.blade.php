@@ -24,18 +24,17 @@
 
         {{-- RIGHT PANEL: Video and next button --}}
         <div class="materi-right-panel">
-            {{-- YouTube video embed --}}
-            <iframe
-                src="https://www.youtube.com/embed/{{ $material->youtube_id }}"
-                title="{{ $material->title }}"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                class="fullscreen-video">
-            </iframe>
+            
+            {{-- Local Video for ALL Materials --}}
+            <video class="fullscreen-video" controls autoplay disablePictureInPicture controlsList="nodownload">
+                <source src="{{ asset('video/ringkasan.mp4') }}" type="video/mp4">
+                Browser Anda tidak mendukung tag video.
+            </video>
 
             {{-- Circular next button --}}
-            <a href="{{ route('quiz.show', $material) }}" class="btn-circle btn-next-circle" title="@if($progress->status === 'done') Ulangi Quiz @else Lanjut ke Quiz @endif">
+            <a href="{{ route('quiz.show', $material) }}" 
+               class="btn-circle btn-next-circle @if($progress->status !== 'done') btn-disabled @endif" 
+               @if($progress->status !== 'done') data-tooltip="Selesaikan video terlebih dahulu" @else title="Ulangi Quiz" @endif>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
                 </svg>
@@ -47,6 +46,20 @@
 
 @push('styles')
 <style>
+    /* Disabled Button Style */
+    .btn-disabled {
+        opacity: 0.5;
+        cursor: not-allowed !important;
+        /* pointer-events: none; REMOVED to allow hover tooltip */
+        filter: grayscale(100%);
+    }
+
+    /* Disable Fullscreen & PiP Buttons for Local Video */
+    video::-webkit-media-controls-fullscreen-button,
+    video::-webkit-media-controls-picture-in-picture-button {
+        display: none !important;
+    }
+    
     /* ============================================
        SPLIT-SCREEN LAYOUT
        ============================================ */
@@ -99,26 +112,27 @@
        ============================================ */
     .materi-right-panel {
         width: 50%;
-        background: linear-gradient(135deg, #F0B92F 0%, #FF9C00 100%);
+        background: #ffffff; /* User requested all white background */
         position: relative;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end; /* Align content to the right */
         overflow: hidden;
     }
 
     .fullscreen-video {
         width: 100%;
         height: 100%;
+        object-fit: cover;
+        object-position: center;
         position: absolute;
         top: 0;
         left: 0;
+        right: 0;
+        bottom: 0;
         border: none;
     }
 
-    /* ============================================
-       CIRCULAR NAVIGATION BUTTONS
-       ============================================ */
     .btn-circle {
         width: 70px;
         height: 70px;
@@ -134,6 +148,30 @@
         transition: all 0.3s ease;
         text-decoration: none;
         z-index: 100;
+        position: relative; /* For tooltip positioning context */
+    }
+
+    /* Custom Tooltip Logic */
+    .btn-disabled[data-tooltip]:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 85px; /* Position above button */
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 1000;
+        animation: fadeIn 0.2s ease;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateX(-50%) translateY(5px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
 
     .btn-circle:hover {
@@ -151,16 +189,18 @@
         height: 28px;
     }
 
-    /* Back button positioning (top-left of left panel) */
+    /* Back button positioning (top-left, same as beranda .btn-back) */
     .btn-back-circle {
-        top: 40px;
-        left: 40px;
+        top: 88px;
+        left: 80px;
+        position: fixed;
     }
 
-    /* Next button positioning (bottom-right of right panel) */
+    /* Next button positioning (bottom-right of screen) */
     .btn-next-circle {
-        bottom: 40px;
+        bottom: 80px;
         right: 40px;
+        position: fixed;
     }
 
     /* ============================================
@@ -193,7 +233,7 @@
         }
 
         .btn-next-circle {
-            bottom: 30px;
+            bottom: 60px;
             right: 30px;
         }
     }
@@ -232,7 +272,7 @@
         }
 
         .btn-next-circle {
-            bottom: 20px;
+            bottom: 40px;
             right: 20px;
         }
 
@@ -282,5 +322,63 @@
             height: 20px;
         }
     }
+
+    /* FORCE WHITE BACKGROUND GLOBALLY FOR THIS PAGE */
+    body, html, .main-bg, .content {
+        background: #ffffff !important;
+        background-image: none !important;
+        padding: 0 !important; /* Ensure no padding prevents edge-to-edge */
+        margin: 0 !important;
+        width: 100%;
+    }
+
+    /* Custom Header Styles for this page */
+    .header {
+        display: flex !important; /* Restore header */
+        position: absolute !important; /* Overlay on top */
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: transparent !important; /* Transparent bg */
+        box-shadow: none !important;
+        z-index: 999;
+        padding: 20px 40px !important; /* Adjust padding if needed */
+    }
+
+    /* Hide User/QnA Icons */
+    .header .icon-container {
+        display: none !important;
+    }
+
+    /* Adjust Left Panel Padding to compensate for absolute header */
+    .materi-left-panel {
+        padding-top: 140px !important; /* Push content down */
+    }
 </style>
+@endpush
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.querySelector('video');
+        const nextBtn = document.querySelector('.btn-next-circle');
+
+        if (video && nextBtn && nextBtn.classList.contains('btn-disabled')) {
+            // Listen for video end
+            video.addEventListener('ended', function() {
+                nextBtn.classList.remove('btn-disabled');
+                // Optional: Play a sound or small animation to indicate it's enabled
+                console.log('Video finished, next button enabled.');
+            });
+
+            // Prevent click just in case CSS pointer-events fails (e.g. older browsers)
+            nextBtn.addEventListener('click', function(e) {
+                if (this.classList.contains('btn-disabled')) {
+                    e.preventDefault();
+                    alert('Silakan tonton video sampai selesai untuk melanjutkan!');
+                }
+            });
+        }
+    });
+</script>
 @endpush

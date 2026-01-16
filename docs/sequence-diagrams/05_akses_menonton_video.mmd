@@ -1,0 +1,30 @@
+﻿sequenceDiagram
+    actor User as Pengguna
+    participant Boundary as Halaman Video
+    participant Control as MaterialController
+    participant Entity as Material
+    participant Storage as Local Storage
+
+    User->>Control: getMaterials()
+    Control->>Entity: getAllMaterials()
+    Entity-->>Control: Daftar materi
+    Control->>Entity: getUserProgress(user_id)
+    Entity-->>Control: Progress data
+    Control-->>Boundary: Tampilkan slider materi
+    Boundary-->>User: Render halaman submenu
+    User->>Boundary: Pilih materi yang unlocked
+    Boundary->>Control: getMaterial(id)
+    Control->>Control: cekAksesUser()
+    alt Materi unlocked
+        Control->>Entity: getMaterialData(id)
+        Entity-->>Control: Data materi
+        Boundary->>Storage: Load video dari public/video
+        Storage-->>Boundary: File video
+        Boundary-->>User: Tampilkan video player
+        User->>Boundary: Tonton video sampai selesai
+        Boundary-->>Boundary: Enable tombol Next
+        User->>Boundary: Klik tombol Next
+        Boundary-->>User: Redirect ke Quiz
+    else Materi locked
+        Control-->>User: Error 403
+    end

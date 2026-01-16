@@ -62,6 +62,18 @@
                 @csrf
                 <input type="hidden" name="answers" id="quiz-answers" value="">
             </form>
+
+            {{-- Popup GIF untuk feedback --}}
+            <div id="lottie-popup" class="lottie-popup" style="display: none;">
+                <div class="lottie-popup-content">
+                    <img id="popup-gif" src="" alt="Feedback">
+                </div>
+            </div>
+
+            {{-- Ornamen kiri bawah --}}
+            <div class="quiz-ornamen-bawah">
+                <img src="{{ asset('images/Group 4.png') }}" alt="Ornamen">
+            </div>
         @endif
     </div>
 
@@ -73,7 +85,7 @@
         max-width: 1200px;
         margin: 0 auto;
         padding: 20px;
-        margin-top: 120px;
+        margin-top: 80px;
         position: relative;
     }
 
@@ -115,7 +127,7 @@
     /* Question Container */
     .question-container {
         position: relative;
-        min-height: 500px;
+        min-height: 400px;
     }
 
     .question-slide {
@@ -132,10 +144,10 @@
         background: rgba(255, 255, 255, 0.95);
         border: 3px solid #FF9C00;
         border-radius: 30px;
-        padding: 40px;
+        padding: 35px 60px;
         margin-bottom: 40px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        min-height: 150px;
+        min-height: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -154,24 +166,25 @@
     .options-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 30px;
+        gap: 20px;
         margin-bottom: 40px;
     }
 
     .option-card {
         background: #F5F2DC;
-        border-radius: 25px;
-        padding: 30px 20px;
+        border-radius: 18px;
+        padding: 22px 15px;
         text-align: center;
         cursor: pointer;
         transition: all 0.3s ease;
         position: relative;
-        min-height: 180px;
+        height: 130px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        z-index: 20;
     }
 
     .option-card:hover:not(.selected):not(.disabled) {
@@ -181,17 +194,17 @@
 
     .option-badge {
         position: absolute;
-        top: -15px;
+        top: -14px;
         left: 50%;
         transform: translateX(-50%);
-        width: 45px;
-        height: 45px;
+        width: 40px;
+        height: 40px;
         background: #FF9C00;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         font-weight: 700;
         color: white;
         box-shadow: 0 3px 10px rgba(255, 156, 0, 0.4);
@@ -206,8 +219,8 @@
 
     .feedback-icon {
         display: none;
-        margin-top: 15px;
-        font-size: 3rem;
+        margin-top: 12px;
+        font-size: 2.5rem;
     }
 
     /* Selected and feedback states */
@@ -254,7 +267,43 @@
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(255, 156, 0, 0.5);
-        z-index: 1000;
+        z-index: 9000;
+    }
+
+    /* Hide default ornaments on quiz page */
+    .bottom-ornamen,
+    .top-right-ornamen {
+        display: none !important;
+    }
+
+    /* Keep quiz content above ornaments */
+    .quiz-content-new {
+        position: relative;
+        z-index: 10;
+    }
+
+    .question-container {
+        position: relative;
+        z-index: 10;
+    }
+
+    .option-card {
+        z-index: 10;
+    }
+
+    /* Ornamen kiri bawah */
+    .quiz-ornamen-bawah {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 5;
+        pointer-events: none;
+    }
+
+    .quiz-ornamen-bawah img {
+        width: 350px;
+        height: auto;
+        opacity: 0.9;
     }
 
     .btn-next-question:hover {
@@ -266,10 +315,33 @@
         color: #1B5AA1;
     }
 
-    /* Background transition for wrong answer */
-    body.wrong-answer-bg {
-        background: linear-gradient(to bottom, #FF9C00, #F0A500, #D88C00) !important;
+    /* Background transition for wrong answer - targets parallax-wrapper */
+    .parallax-wrapper {
         transition: background 0.5s ease;
+    }
+
+    .parallax-wrapper.wrong-answer-bg {
+        background: linear-gradient(135deg, #C47F17 0%, #D4920F 50%, #A06A10 100%) !important;
+    }
+
+    /* Full page yellow when wrong - including body and header */
+    body.wrong-answer-bg,
+    body.wrong-answer-bg .main-bg {
+        background: linear-gradient(135deg, #C47F17 0%, #D4920F 50%, #A06A10 100%) !important;
+    }
+
+    body.wrong-answer-bg .header {
+        background: transparent !important;
+    }
+
+    .parallax-wrapper.wrong-answer-bg .question-box,
+    body.wrong-answer-bg .question-box {
+        border-color: #FF9C00;
+    }
+
+    .parallax-wrapper.wrong-answer-bg .option-badge,
+    body.wrong-answer-bg .option-badge {
+        background: #C47F17;
     }
 
     /* Responsive */
@@ -311,6 +383,39 @@
             width: 60px;
             height: 60px;
         }
+    }
+
+    /* Popup GIF Styles */
+    .lottie-popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999;
+    }
+
+    /* Header icons should be behind popup */
+    .header,
+    .icon-container {
+        z-index: 100;
+    }
+
+    .lottie-popup-content {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .lottie-popup-content img {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
     }
 </style>
 @endpush

@@ -29,7 +29,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended(route('judul'));
+            return redirect()->route('judul');
         }
 
         return back()->withErrors([
@@ -53,13 +53,20 @@ class AuthController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:users,email'],
-            'password' => ['required', 'min:6', 'confirmed'],
+            'password' => [
+                'required', 
+                'min:8',              // min 8 characters
+                'confirmed', 
+                'regex:/[a-z]/',      // at least one lowercase letter
+                'regex:/[A-Z]/',      // at least one uppercase letter
+                'regex:/[0-9]/',      // at least one number
+            ],
         ]);
 
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
-            'password' => $validated['password'],
+            'password' => \Illuminate\Support\Facades\Hash::make($validated['password']),
         ]);
 
         // Don't auto-login, redirect to login page instead

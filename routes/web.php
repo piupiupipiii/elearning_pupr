@@ -11,20 +11,22 @@ Route::get('/', function () {
     return view('pages.judul');
 })->name('judul');
 
-Route::get('/intro', function () {
-    return view('pages.intro');
-})->name('intro');
-
-Route::get('/beranda', function () {
-    return view('pages.beranda');
-})->name('beranda');
-
-Route::get('/kd', function (){
-    return view('pages.kd');
-})->name('kd');
+Route::get('/qna', function () {
+    return view('pages.qna');
+})->name('qna');
 
 // Protected routes - require authentication
 Route::middleware('auth')->group(function () {
+    // Beranda Modul
+    Route::get('/beranda', function () {
+        return view('pages.beranda');
+    })->name('beranda');
+
+    // Kompetensi Dasar
+    Route::get('/kd', function (){
+        return view('pages.kd');
+    })->name('kd');
+
     // Profile
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 

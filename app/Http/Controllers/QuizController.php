@@ -98,10 +98,15 @@ class QuizController extends Controller
         // Mark current material as done
         $progress->update(['status' => 'done']);
 
-        // Unlock next material
-        $this->unlockNextMaterial($user, $material);
+        // Unlock next material and get its ID
+        $nextMaterialId = $this->unlockNextMaterial($user, $material);
 
-        return redirect()->route('submenu')->with('success', 'Quiz selesai! Materi berikutnya telah dibuka.');
+        // Redirect with focus on next material if available
+        if ($nextMaterialId) {
+            return redirect()->route('submenu', ['focus' => $nextMaterialId])->with('success', 'Quiz selesai! Materi berikutnya telah dibuka.');
+        }
+
+        return redirect()->route('submenu')->with('success', 'Quiz selesai! Selamat, Anda telah menyelesaikan semua materi.');
     }
 
     /**
@@ -120,6 +125,7 @@ class QuizController extends Controller
 
     /**
      * Unlock the next material in order.
+     * Returns the next material's ID if unlocked, null otherwise.
      */
     private function unlockNextMaterial($user, $currentMaterial)
     {
@@ -141,6 +147,10 @@ class QuizController extends Controller
                     'status' => 'unlocked',
                 ]);
             }
+
+            return $nextMaterial->id;
         }
+
+        return null;
     }
 }

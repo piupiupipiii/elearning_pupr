@@ -12,7 +12,7 @@ class MaterialController extends Controller
     /**
      * Display the submenu with all materials and their progress status.
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
         $materials = Material::orderBy('order')->get();
@@ -25,7 +25,20 @@ class MaterialController extends Controller
             ->pluck('status', 'material_id')
             ->toArray();
 
-        return view('pages.submenu', compact('materials', 'userProgress'));
+        // Calculate initial slider index based on focus parameter
+        $initialIndex = 0;
+        $focusMaterialId = $request->query('focus');
+        
+        if ($focusMaterialId) {
+            foreach ($materials as $index => $material) {
+                if ($material->id == $focusMaterialId) {
+                    $initialIndex = $index;
+                    break;
+                }
+            }
+        }
+
+        return view('pages.submenu', compact('materials', 'userProgress', 'initialIndex'));
     }
 
     /**

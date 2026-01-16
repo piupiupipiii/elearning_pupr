@@ -112,7 +112,7 @@
     .section-title {
         font-size: 24px;
         font-weight: 700;
-        color: #1E3A8A;
+        color: white;
         margin-bottom: 20px;
         border-left: 5px solid #F59E0B;
         padding-left: 15px;
@@ -185,32 +185,36 @@
         border-radius: 16px;
     }
 
-    /* Back Button Styling similar to other pages */
-    .btn-back-profile {
-        display: inline-flex;
-        align-items: center;
-        padding: 10px 20px;
-        background: white;
-        color: #1E3A8A;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        margin-bottom: 20px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        transition: all 0.2s;
+    /* Back Button - matches other pages */
+    .btn-back {
+        position: fixed;
+        top: 88px;
+        left: 80px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+        z-index: 9999;
+        padding: 0;
     }
 
-    .btn-back-profile:hover {
-        transform: translateX(-3px);
+    .btn-back:hover {
+        transform: scale(1.1);
+    }
+
+    .btn-back img {
+        width: 65px;
+        height: 65px;
+        filter: drop-shadow(0px 3px 5px rgba(0,0,0,0.3));
     }
 </style>
 @endpush
 
 @section('content')
 <div class="profile-container">
-    <a href="{{ route('beranda') }}" class="btn-back-profile">
-        ← Kembali ke Beranda
-    </a>
+    <button class="btn-back" onclick="history.back()">
+        <img src="{{ asset('images/icon/back.png') }}" alt="Kembali">
+    </button>
 
     <div class="profile-header">
         <div class="profile-avatar">

@@ -24,8 +24,8 @@
                 <button class="btn-yellow">Mulai</button>
             </a>
         @else
-            <a href="{{ route('signup') }}">
-                <button class="btn-yellow">Daftar</button>
+            <a href="{{ route('login') }}">
+                <button class="btn-yellow">Login</button>
             </a>
         @endauth 
 

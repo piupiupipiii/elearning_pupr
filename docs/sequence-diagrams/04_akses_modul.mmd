@@ -1,0 +1,23 @@
+﻿sequenceDiagram
+    actor User as Pengguna
+    participant Judul as Halaman Pengantar Modul
+    participant Login as Halaman Login
+    participant Auth as AuthController
+    participant Beranda as Beranda Modul
+
+    User->>Judul: Mengakses halaman pengantar modul
+    Judul-->>User: Render halaman
+    alt User belum login
+        Judul-->>User: Tampilkan tombol Login
+        User->>Login: Klik Login
+        Login-->>User: Tampilkan form login
+        User->>Login: Input kredensial
+        Login->>Auth: login(email, password)
+        Auth-->>Judul: Redirect ke pengantar modul
+        Judul-->>User: Tampilkan tombol Mulai
+    else User sudah login
+        Judul-->>User: Tampilkan tombol Mulai
+    end
+    User->>Judul: Klik tombol Mulai
+    Judul->>Beranda: Request GET beranda
+    Beranda-->>User: Tampilkan 3 card menu

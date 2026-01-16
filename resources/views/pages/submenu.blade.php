@@ -15,12 +15,6 @@
         <div class="subtitle-center">(Divisi 1 - Penerapan SMKK)</div>
     </div>
 
-    @if(session('success'))
-        <div style="background: #4CAF50; color: white; padding: 10px 20px; border-radius: 8px; margin: 10px auto; max-width: 500px; text-align: center;">
-            {{ session('success') }}
-        </div>
-    @endif
-
     {{-- Ingat: .parallax-inner.submenu-main sudah ada di layout,
          jadi di sini langsung isi anak flex-nya saja: kiri info, kanan slider --}}
 
@@ -97,6 +91,10 @@
 @endsection
 
 @push('scripts')
+    {{-- Pass initial index from controller to JavaScript --}}
+    <script>
+        window.sliderInitialIndex = {{ $initialIndex ?? 0 }};
+    </script>
     {{-- pastikan nama file JS-nya sama dengan yang di public/js --}}
     <script src="{{ asset('js/slider.js') }}"></script>
     <script>
