@@ -27,9 +27,15 @@ class ProfileController extends Controller
             
         $totalMaterials = Material::count();
 
-        // Get quiz scores
+        // Get quiz scores - only latest score per material (no duplicates)
         $quizScores = QuizScore::where('user_id', $user->id)
-            ->with('material') // Eager load material to show title
+            ->with('material')
+            ->whereIn('id', function ($query) use ($user) {
+                $query->selectRaw('MAX(id)')
+                    ->from('quiz_scores')
+                    ->where('user_id', $user->id)
+                    ->groupBy('material_id');
+            })
             ->orderBy('created_at', 'desc')
             ->get();
 

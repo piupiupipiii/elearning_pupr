@@ -101,12 +101,8 @@ class QuizController extends Controller
         // Unlock next material and get its ID
         $nextMaterialId = $this->unlockNextMaterial($user, $material);
 
-        // Redirect with focus on next material if available
-        if ($nextMaterialId) {
-            return redirect()->route('submenu', ['focus' => $nextMaterialId])->with('success', 'Quiz selesai! Materi berikutnya telah dibuka.');
-        }
-
-        return redirect()->route('submenu')->with('success', 'Quiz selesai! Selamat, Anda telah menyelesaikan semua materi.');
+        // Redirect with focus on completed material (so user sees the DONE card)
+        return redirect()->route('submenu', ['focus' => $material->id])->with('success', 'Quiz selesai! Materi berikutnya telah dibuka.');
     }
 
     /**

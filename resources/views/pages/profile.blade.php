@@ -260,7 +260,7 @@
         <tbody>
             @foreach($quizScores as $score)
             <tr>
-                <td>{{ $score->material->title }}</td>
+                <td>SEKSI {{ $score->material->section_number }} - {{ $score->material->title }}</td>
                 <td>{{ $score->created_at->format('d M Y, H:i') }}</td>
                 <td>{{ $score->correct_answers }} / {{ $score->total_questions }}</td>
                 <td>

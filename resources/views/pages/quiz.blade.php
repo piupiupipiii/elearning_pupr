@@ -173,12 +173,13 @@
     .option-card {
         background: #F5F2DC;
         border-radius: 18px;
-        padding: 22px 15px;
+        padding: 30px 15px 22px 15px;
         text-align: center;
         cursor: pointer;
         transition: all 0.3s ease;
         position: relative;
-        height: 130px;
+        min-height: 150px;
+        height: 150px;
         display: flex;
         flex-direction: column;
         align-items: center;

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    let currentIndex = 0;
+    let currentIndex = window.sliderInitialIndex || 0;
 
     function updateSlider() {
         // Remove all size classes
