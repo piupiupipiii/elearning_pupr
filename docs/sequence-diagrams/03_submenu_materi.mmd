@@ -1,0 +1,25 @@
+sequenceDiagram
+    autonumber
+    
+    actor U as Pengguna
+    participant B as Halaman Sub Menu
+    participant C as MaterialController
+    participant M as Material
+    participant P as UserProgress
+
+    U->>B: Mengakses sub menu materi
+    B->>C: index()
+    C->>M: getAllMaterials()
+    M-->>C: daftar materi
+    C->>P: getProgressByUser(userId)
+    P-->>C: data progress user
+    
+    alt data progres user kosong
+        C->>P: createProgress(userId, materialId, unlocked)
+        P-->>C: progress created
+    end
+    
+    Note over C: Menentukan status materi<br/>berdasarkan data progres
+    
+    C-->>B: render dengan status materi
+    B-->>U: Menampilkan slider materi dengan status

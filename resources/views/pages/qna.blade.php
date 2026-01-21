@@ -1,384 +1,163 @@
 @extends('layouts.layout')
 
-@section('title', 'Bantuan & FAQ')
+@section('title', 'FAQ - Bantuan')
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/qna.css') }}">
 @endpush
 
 @section('content')
-<div class="qna-container">
+<div class="faq-container">
     <button class="btn-back" onclick="history.back()">
         <img src="{{ asset('images/icon/back.png') }}" alt="Kembali">
     </button>
 
-    <div class="qna-header">
-        <div class="qna-icon">
-            <img src="{{ asset('images/icon/qna.png') }}" alt="QnA">
-        </div>
-        <h1>Bantuan & FAQ</h1>
-        <p>Temukan jawaban untuk pertanyaan yang sering diajukan</p>
+    <div class="faq-header">
+        <h1>Frequently Asked Questions</h1>
+        <p>Pertanyaan yang sering diajukan tentang E-Learning SMKK</p>
     </div>
 
-    <div class="faq-section">
-        {{-- Kategori 1: Pertanyaan Umum --}}
-        <div class="faq-category">
-            <h2 class="category-title">
-                <span class="category-icon">🔐</span>
-                Pertanyaan Umum
-            </h2>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara mendaftar akun baru?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Untuk mendaftar akun baru:</p>
-                    <ol>
-                        <li>Klik icon <strong>profil</strong> di pojok kanan atas</li>
-                        <li>Pilih <strong>"Daftar"</strong> atau klik link "Belum punya akun?"</li>
-                        <li>Isi nama lengkap, email, dan password</li>
-                        <li>Klik tombol <strong>"Daftar"</strong></li>
-                    </ol>
-                </div>
+    <div class="faq-list">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Apa itu E-Learning SMKK?</span>
+                <div class="faq-icon">+</div>
             </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara login ke akun saya?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Untuk login:</p>
-                    <ol>
-                        <li>Klik icon <strong>profil</strong> di pojok kanan atas</li>
-                        <li>Masukkan email dan password yang sudah terdaftar</li>
-                        <li>Klik tombol <strong>"Masuk"</strong></li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara logout dari akun?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Untuk logout:</p>
-                    <ol>
-                        <li>Klik icon <strong>profil</strong> di pojok kanan atas</li>
-                        <li>Akan muncul dropdown menu dengan nama Anda</li>
-                        <li>Klik tombol <strong>"Logout"</strong></li>
-                        <li>Konfirmasi dengan klik <strong>"Ya"</strong> pada popup yang muncul</li>
-                    </ol>
-                </div>
+            <div class="faq-answer">
+                <p>E-Learning SMKK adalah platform pembelajaran online tentang Sistem Manajemen Keselamatan Konstruksi (SMKK). Platform ini menyediakan materi video pembelajaran yang dapat diakses kapan saja dan dimana saja untuk membantu Anda memahami standar keselamatan dalam proyek konstruksi.</p>
             </div>
         </div>
 
-        {{-- Kategori 2: Navigasi Modul --}}
-        <div class="faq-category">
-            <h2 class="category-title">
-                <span class="category-icon">🧭</span>
-                Navigasi Modul
-            </h2>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Apa saja menu yang tersedia di Beranda Modul?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Di Beranda Modul terdapat 3 menu utama:</p>
-                    <ul>
-                        <li><strong>Kompetensi Dasar</strong> - Berisi pendahuluan dan tujuan pembelajaran</li>
-                        <li><strong>Video Materi</strong> - Berisi video pembelajaran yang tersusun dalam beberapa seksi</li>
-                        <li><strong>Media Pendukung</strong> - Berisi file-file pendukung yang dapat didownload</li>
-                    </ul>
-                </div>
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Bagaimana cara mendaftar akun?</span>
+                <div class="faq-icon">+</div>
             </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara mengakses Video Materi?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Untuk mengakses Video Materi:</p>
-                    <ol>
-                        <li>Dari halaman Beranda Modul, klik tombol panah pada card <strong>"Video Materi"</strong></li>
-                        <li>Anda akan diarahkan ke halaman Sub Menu Video Materi</li>
-                        <li>Pilih seksi yang ingin dipelajari dari slider kartu</li>
-                    </ol>
-                    <p><em>Catatan: Anda harus login terlebih dahulu untuk mengakses Video Materi.</em></p>
-                </div>
+            <div class="faq-answer">
+                <p>Untuk mendaftar akun:</p>
+                <ol>
+                    <li>Klik tombol "Daftar" di halaman login</li>
+                    <li>Isi nama lengkap, email, dan password</li>
+                    <li>Password harus minimal 8 karakter dengan kombinasi huruf besar, huruf kecil, dan angka</li>
+                    <li>Klik tombol "Daftar" untuk menyelesaikan registrasi</li>
+                </ol>
             </div>
         </div>
 
-        {{-- Kategori 3: Video Materi / Submenu --}}
-        <div class="faq-category">
-            <h2 class="category-title">
-                <span class="category-icon">🎬</span>
-                Sub Menu Video Materi
-            </h2>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Apa arti icon gembok pada kartu materi?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Icon pada kartu materi menunjukkan status pembelajaran:</p>
-                    <ul>
-                        <li><strong>🔒 Gembok Terkunci</strong> - Materi belum dapat diakses. Selesaikan materi sebelumnya terlebih dahulu</li>
-                        <li><strong>🔓 Gembok Terbuka</strong> - Materi dapat diakses dan siap dipelajari</li>
-                        <li><strong>✓ Centang</strong> - Materi sudah selesai dipelajari dan quiz telah dikerjakan</li>
-                    </ul>
-                </div>
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Bagaimana cara mengakses materi pembelajaran?</span>
+                <div class="faq-icon">+</div>
             </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara membuka materi yang terkunci?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Materi dibuka secara berurutan. Untuk membuka materi berikutnya:</p>
-                    <ol>
-                        <li>Tonton video materi saat ini sampai selesai</li>
-                        <li>Kerjakan quiz yang tersedia</li>
-                        <li>Setelah quiz selesai, materi berikutnya akan terbuka secara otomatis</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara menggunakan slider kartu?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Untuk navigasi slider kartu:</p>
-                    <ul>
-                        <li>Klik tombol <strong>◀</strong> untuk melihat materi sebelumnya</li>
-                        <li>Klik tombol <strong>▶</strong> untuk melihat materi berikutnya</li>
-                        <li>Kartu yang paling besar (di tengah) adalah materi yang sedang aktif</li>
-                        <li>Informasi materi aktif akan ditampilkan di sisi kiri layar</li>
-                    </ul>
-                </div>
+            <div class="faq-answer">
+                <p>Setelah login, Anda dapat mengakses materi dengan langkah berikut:</p>
+                <ol>
+                    <li>Klik tombol "Mulai" di halaman utama</li>
+                    <li>Pilih menu "Video Materi" dari Beranda Modul</li>
+                    <li>Pilih materi yang sudah terbuka (tidak terkunci)</li>
+                    <li>Tonton video hingga selesai</li>
+                    <li>Kerjakan quiz untuk membuka materi berikutnya</li>
+                </ol>
             </div>
         </div>
 
-        {{-- Kategori 4: Menonton Video --}}
-        <div class="faq-category">
-            <h2 class="category-title">
-                <span class="category-icon">▶️</span>
-                Menonton Video
-            </h2>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara memulai menonton video?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Untuk memulai video:</p>
-                    <ol>
-                        <li>Pilih materi yang tidak terkunci dari slider</li>
-                        <li>Klik tombol <strong>"Mulai"</strong> atau klik langsung pada kartu materi</li>
-                        <li>Video akan otomatis diputar</li>
-                    </ol>
-                </div>
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Mengapa materi saya terkunci?</span>
+                <div class="faq-icon">+</div>
             </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Kenapa tombol Next/Quiz tidak bisa diklik?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Tombol Next ke Quiz akan <strong>terkunci (berwarna abu-abu)</strong> sampai video selesai ditonton.</p>
-                    <p>Untuk mengaktifkan tombol:</p>
-                    <ol>
-                        <li>Tonton video sampai selesai (sampai akhir)</li>
-                        <li>Tombol akan aktif secara otomatis</li>
-                        <li>Klik tombol untuk lanjut ke Quiz</li>
-                    </ol>
-                </div>
+            <div class="faq-answer">
+                <p>Materi terkunci karena sistem pembelajaran bersifat berurutan. Anda harus menyelesaikan materi sebelumnya beserta quiz-nya terlebih dahulu. Setelah quiz selesai, materi berikutnya akan otomatis terbuka.</p>
             </div>
         </div>
 
-        {{-- Kategori 5: Quiz --}}
-        <div class="faq-category">
-            <h2 class="category-title">
-                <span class="category-icon">📝</span>
-                Quiz
-            </h2>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara menjawab pertanyaan quiz?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Untuk menjawab quiz:</p>
-                    <ol>
-                        <li>Baca pertanyaan yang ditampilkan di kotak atas</li>
-                        <li>Pilih salah satu jawaban dengan <strong>klik pada kartu pilihan</strong> (A, B, C, atau D)</li>
-                        <li>Setelah memilih, sistem akan langsung menampilkan feedback benar/salah</li>
-                    </ol>
-                </div>
+        <!-- FAQ 5 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Bagaimana cara mengerjakan quiz?</span>
+                <div class="faq-icon">+</div>
             </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Apa yang terjadi jika jawaban saya benar/salah?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Sistem akan memberikan feedback langsung:</p>
-                    <ul>
-                        <li><strong>✓ Jawaban Benar</strong> - Muncul animasi centang hijau dan popup berhasil</li>
-                        <li><strong>✕ Jawaban Salah</strong> - Muncul tanda silang merah dan popup gagal. Jawaban yang benar akan ditandai.</li>
-                    </ul>
-                    <p>Setelah feedback, tombol <strong>Next</strong> akan muncul untuk lanjut ke soal berikutnya.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara pindah ke soal berikutnya?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Setelah menjawab pertanyaan:</p>
-                    <ol>
-                        <li>Tunggu feedback animasi selesai</li>
-                        <li>Klik tombol <strong>panah (→)</strong> di pojok kanan bawah</li>
-                        <li>Soal berikutnya akan ditampilkan</li>
-                    </ol>
-                    <p><em>Catatan: Pada soal terakhir, jawaban akan otomatis disubmit dan Anda akan diarahkan kembali ke Sub Menu.</em></p>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Apakah saya bisa mengulang quiz?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Ya, Anda dapat mengulang quiz kapan saja:</p>
-                    <ol>
-                        <li>Kembali ke halaman materi yang sudah selesai</li>
-                        <li>Klik tombol Next untuk masuk ke Quiz</li>
-                        <li>Nilai terbaru akan disimpan di riwayat profil Anda</li>
-                    </ol>
-                </div>
+            <div class="faq-answer">
+                <p>Quiz dapat diakses setelah menonton video materi:</p>
+                <ol>
+                    <li>Setelah video selesai, tombol "Next" akan muncul</li>
+                    <li>Klik tombol tersebut untuk masuk ke halaman quiz</li>
+                    <li>Jawab setiap pertanyaan dengan memilih salah satu opsi (A, B, C, atau D)</li>
+                    <li>Setelah menjawab, sistem akan menunjukkan apakah jawaban benar atau salah</li>
+                    <li>Selesaikan semua soal untuk membuka materi berikutnya</li>
+                </ol>
             </div>
         </div>
 
-        {{-- Kategori 6: Media Pendukung --}}
-        <div class="faq-category">
-            <h2 class="category-title">
-                <span class="category-icon">📁</span>
-                Media Pendukung
-            </h2>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Apa itu Media Pendukung?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Media Pendukung adalah kumpulan file tambahan yang dapat membantu pembelajaran, seperti:</p>
-                    <ul>
-                        <li>Dokumen PDF</li>
-                        <li>Presentasi PowerPoint</li>
-                        <li>File-file referensi lainnya</li>
-                    </ul>
-                </div>
+        <!-- FAQ 6 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Dimana saya bisa melihat progress belajar saya?</span>
+                <div class="faq-icon">+</div>
             </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara mendownload file?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Untuk mendownload file:</p>
-                    <ol>
-                        <li>Buka menu <strong>Media Pendukung</strong> dari Beranda Modul</li>
-                        <li>Cari file yang ingin didownload</li>
-                        <li>Klik tombol <strong>Download</strong> pada file tersebut</li>
-                        <li>File akan otomatis terdownload ke perangkat Anda</li>
-                    </ol>
-                </div>
+            <div class="faq-answer">
+                <p>Anda dapat melihat progress belajar di halaman Profile:</p>
+                <ol>
+                    <li>Klik icon profil di pojok kanan atas</li>
+                    <li>Pilih "Profile" dari menu dropdown</li>
+                    <li>Di halaman profile, Anda dapat melihat jumlah video yang sudah ditonton dan riwayat nilai quiz</li>
+                </ol>
             </div>
         </div>
 
-        {{-- Kategori 7: Profil Pengguna --}}
-        <div class="faq-category">
-            <h2 class="category-title">
-                <span class="category-icon">👤</span>
-                Profil Pengguna
-            </h2>
-
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Bagaimana cara melihat profil saya?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Untuk melihat profil:</p>
-                    <ol>
-                        <li>Pastikan Anda sudah login</li>
-                        <li>Klik icon <strong>profil</strong> di pojok kanan atas</li>
-                        <li>Klik tombol <strong>"Profile"</strong> pada dropdown menu</li>
-                    </ol>
-                </div>
+        <!-- FAQ 7 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Apa itu Media Pendukung?</span>
+                <div class="faq-icon">+</div>
             </div>
+            <div class="faq-answer">
+                <p>Media Pendukung adalah file-file tambahan seperti PDF, DOCX, atau PPTX yang dapat diunduh untuk membantu proses pembelajaran. Anda bisa mengakses Media Pendukung dari menu "Media Pendukung" di Beranda Modul.</p>
+            </div>
+        </div>
 
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Apa saja informasi yang bisa saya lihat di Profil?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <p>Di halaman Profil, Anda dapat melihat:</p>
-                    <ul>
-                        <li><strong>Informasi Akun</strong> - Nama dan email Anda</li>
-                        <li><strong>Progress Video</strong> - Jumlah video yang sudah ditonton dari total video</li>
-                        <li><strong>Rata-rata Nilai</strong> - Rata-rata nilai dari semua quiz yang dikerjakan</li>
-                        <li><strong>Riwayat Nilai Quiz</strong> - Daftar lengkap semua quiz beserta tanggal dan nilai</li>
-                    </ul>
-                </div>
+        <!-- FAQ 8 -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+                <span>Apakah saya bisa mengulang quiz?</span>
+                <div class="faq-icon">+</div>
+            </div>
+            <div class="faq-answer">
+                <p>Ya, Anda dapat mengulang quiz untuk materi yang sudah pernah dikerjakan. Nilai yang ditampilkan di halaman Profile adalah nilai terbaru dari setiap quiz yang Anda kerjakan.</p>
             </div>
         </div>
     </div>
 </div>
-@endsection
 
-@push('scripts')
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
+function toggleFaq(element) {
+    const faqItem = element.parentElement;
+    const answer = faqItem.querySelector('.faq-answer');
+    const icon = element.querySelector('.faq-icon');
     
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            const item = this.parentElement;
-            const isActive = item.classList.contains('active');
-            
-            // Close all other accordion items
-            document.querySelectorAll('.accordion-item').forEach(otherItem => {
-                otherItem.classList.remove('active');
-            });
-            
-            // Toggle current item
-            if (!isActive) {
-                item.classList.add('active');
-            }
-        });
+    // Close all other FAQ items
+    document.querySelectorAll('.faq-item.active').forEach(item => {
+        if (item !== faqItem) {
+            item.classList.remove('active');
+            item.querySelector('.faq-answer').style.maxHeight = null;
+            item.querySelector('.faq-icon').textContent = '+';
+        }
     });
-});
+    
+    // Toggle current item
+    if (faqItem.classList.contains('active')) {
+        faqItem.classList.remove('active');
+        answer.style.maxHeight = null;
+        icon.textContent = '+';
+    } else {
+        faqItem.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.textContent = '−';
+    }
+}
 </script>
-@endpush
+@endsection

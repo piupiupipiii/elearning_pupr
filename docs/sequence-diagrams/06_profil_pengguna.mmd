@@ -1,0 +1,22 @@
+sequenceDiagram
+    autonumber
+    
+    actor U as Pengguna
+    participant B as Halaman Profil
+    participant C as ProfileController
+    participant P as UserProgress
+    participant M as Material
+    participant S as QuizScore
+
+    U->>B: Mengakses halaman profil
+    B->>C: index()
+    C->>P: getCompletedCount(userId)
+    P-->>C: jumlah materi selesai
+    C->>M: getTotalCount()
+    M-->>C: total materi
+    C->>S: getLatestScores(userId)
+    S-->>C: riwayat nilai per materi
+    C->>C: calculateAverageScore()
+    Note over C: Hitung rata-rata nilai<br/>dari semua quiz
+    C-->>B: render halaman profil
+    B-->>U: Menampilkan profil dengan progress dan riwayat nilai

@@ -1,0 +1,15 @@
+flowchart TD
+    A((●)) --> B[Pengguna mengakses<br/>halaman Pengantar Modul]
+    B --> C{Sudah Login?}
+    
+    C -->|Ya| D[Sistem menampilkan<br/>tombol Mulai]
+    C -->|Tidak| E[Sistem menampilkan<br/>tombol Login]
+    
+    D --> F[Pengguna klik Mulai]
+    E --> G[Pengguna klik Login]
+    
+    F --> H[Redirect ke<br/>Beranda Modul]
+    G --> I[Redirect ke<br/>Halaman Login]
+    
+    H --> J((◉))
+    I --> J

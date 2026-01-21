@@ -17,7 +17,7 @@
 
         <div class="judul-wrapper">
             <h1 class="judul">Beranda Modul</h1>
-            <p class="subjudul">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="subjudul">Pilih menu di bawah untuk memulai pembelajaran SMKK.</p>
         </div>
     </div>
 
@@ -32,8 +32,7 @@
 
             <h3>Kompetensi Dasar</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Pelajari tujuan pembelajaran dan kompetensi yang akan dicapai dalam modul SMKK ini.
             </p>
 
             <a href="{{ route('kd') }}">
@@ -51,8 +50,7 @@
 
             <h3>Video Materi</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Tonton video pembelajaran tentang Sistem Manajemen Keselamatan Konstruksi secara berurutan.
             </p>
 
             <a href="{{ route('submenu') }}">
@@ -70,8 +68,7 @@
 
             <h3>Media Pendukung</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Akses referensi dan tautan sumber materi untuk memperdalam pemahaman SMKK.
             </p>
 
             <a href="{{ route('media-pendukung') }}">

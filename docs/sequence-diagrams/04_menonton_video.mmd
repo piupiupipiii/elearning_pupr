@@ -1,0 +1,28 @@
+sequenceDiagram
+    autonumber
+    
+    actor U as Pengguna
+    participant B as Halaman Video
+    participant C as MaterialController
+    participant P as UserProgress
+    participant M as Material
+
+    U->>B: Memilih materi dari slider
+    B->>C: show(materialId)
+    C->>P: checkAccess(userId, materialId)
+    
+    alt Materi Terkunci
+        P-->>C: access denied
+        C-->>B: return error 403
+        B-->>U: Menampilkan pesan akses ditolak
+    else Materi Terbuka
+        P-->>C: access granted
+        C->>M: getMaterial(materialId)
+        M-->>C: data materi
+        C-->>B: render halaman video
+        B-->>U: Menampilkan video player
+        
+        U->>B: Menonton video hingga selesai
+        B->>B: detectVideoEnd()
+        B-->>U: Mengaktifkan tombol Next ke Quiz
+    end

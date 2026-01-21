@@ -1,0 +1,29 @@
+sequenceDiagram
+    autonumber
+    
+    participant U as Pengguna
+    participant B as Halaman Profil
+    participant C as ProfileController
+    participant E as Entity User/Progress/QuizScore
+
+    U->>B: Klik icon profil
+    B->>U: Tampilkan dropdown menu
+    U->>B: Pilih menu "Profile"
+    B->>C: GET /profile
+    
+    C->>E: getUserData()
+    E-->>C: data user (nama, email)
+    
+    C->>E: getProgressCount()
+    E-->>C: jumlah materi selesai
+    
+    C->>E: getTotalMaterials()
+    E-->>C: total materi
+    
+    C->>E: getQuizScores()
+    E-->>C: riwayat nilai quiz
+    
+    C->>C: hitungRataRata()
+    
+    C-->>B: Kirim data lengkap
+    B-->>U: Tampilkan profil + progres + riwayat nilai

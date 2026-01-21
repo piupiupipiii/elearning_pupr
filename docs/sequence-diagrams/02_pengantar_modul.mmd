@@ -1,0 +1,21 @@
+sequenceDiagram
+    autonumber
+    
+    actor U as Pengguna
+    participant B as Halaman Pengantar
+    participant C as Controller
+    participant S as Session
+
+    U->>B: Mengakses halaman utama
+    B->>C: index()
+    C->>S: checkAuth()
+    
+    alt User Sudah Login
+        S-->>C: authenticated = true
+        C-->>B: render dengan tombol Mulai
+        B-->>U: Menampilkan tombol Mulai
+    else User Belum Login
+        S-->>C: authenticated = false
+        C-->>B: render dengan tombol Login
+        B-->>U: Menampilkan tombol Login
+    end

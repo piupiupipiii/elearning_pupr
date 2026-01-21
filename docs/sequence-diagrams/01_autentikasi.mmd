@@ -1,0 +1,25 @@
+sequenceDiagram
+    autonumber
+    
+    actor U as Pengguna
+    participant B as Halaman Login
+    participant C as AuthController
+    participant E as User
+
+    U->>B: Mengakses halaman login
+    B-->>U: Menampilkan form login
+    U->>B: Mengisi email dan password
+    U->>B: Klik tombol Masuk
+    B->>C: login(request)
+    C->>C: validateCredentials()
+    
+    alt Kredensial Valid
+        C->>E: attempt(credentials)
+        E-->>C: user authenticated
+        C->>C: regenerateSession()
+        C-->>B: redirect ke Pengantar Modul
+        B-->>U: Menampilkan halaman Pengantar Modul
+    else Kredensial Tidak Valid
+        C-->>B: return error message
+        B-->>U: Menampilkan pesan error
+    end

@@ -25,8 +25,10 @@
             </a>
         @endauth
 
-        <!-- Question Icon: No-op for now -->
-        <img src="{{ asset('images/icon/qna.png') }}" alt="Question" class="icon">
+        <!-- Question Icon: Links to FAQ page -->
+        <a href="{{ route('qna') }}">
+            <img src="{{ asset('images/icon/qna.png') }}" alt="Question" class="icon">
+        </a>
     </div>
     @endif
 </header>
