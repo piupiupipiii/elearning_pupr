@@ -325,7 +325,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('login') }}" autocomplete="off">
             @csrf
 
             <div class="form-group">
@@ -338,7 +338,7 @@
                         class="form-input"
                         value="{{ old('email') }}"
                         placeholder="nama@email.com"
-                        autocomplete="new-password"
+                        autocomplete="off"
                         readonly
                         onfocus="this.removeAttribute('readonly');"
                         required
@@ -357,7 +357,7 @@
                         name="password"
                         class="form-input"
                         placeholder="Masukkan password Anda"
-                        autocomplete="new-password"
+                        autocomplete="off"
                         readonly
                         onfocus="this.removeAttribute('readonly');"
                         required

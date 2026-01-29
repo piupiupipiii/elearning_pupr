@@ -1,0 +1,222 @@
+[
+    {
+        "id": 1,
+        "section_number": "1.1",
+        "title": "Ringkasan Pekerjaan",
+        "description": "Ringkasan pekerjaan dan pengenalan dasar tentang Sistem Manajemen Keselamatan Konstruksi (SMKK).",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 1,
+        "created_at": "2026-01-10T13:33:53.000000Z",
+        "updated_at": "2026-01-10T13:33:53.000000Z"
+    },
+    {
+        "id": 2,
+        "section_number": "1.2",
+        "title": "Mobilisasi",
+        "description": "Penjelasan lengkap tentang proses mobilisasi peralatan dan tenaga kerja di lokasi konstruksi.",
+        "youtube_url": "jNQXAC9IVRw",
+        "order": 2,
+        "created_at": "2026-01-10T13:33:53.000000Z",
+        "updated_at": "2026-01-10T13:33:53.000000Z"
+    },
+    {
+        "id": 3,
+        "section_number": "1.3",
+        "title": "Kantor Lapangan Dan Fasilitasnya",
+        "description": "Standar dan persyaratan untuk kantor lapangan serta fasilitas pendukungnya.",
+        "youtube_url": "9bZkp7q19f0",
+        "order": 3,
+        "created_at": "2026-01-10T13:33:53.000000Z",
+        "updated_at": "2026-01-10T13:33:53.000000Z"
+    },
+    {
+        "id": 4,
+        "section_number": "1.4",
+        "title": "Fasilitas Dan Pelayanan Pengujian",
+        "description": "Fasilitas laboratorium dan pelayanan pengujian untuk pengendalian mutu di lapangan.",
+        "youtube_url": "kJQP7kiw5Fk",
+        "order": 4,
+        "created_at": "2026-01-10T13:33:53.000000Z",
+        "updated_at": "2026-01-10T13:33:53.000000Z"
+    },
+    {
+        "id": 5,
+        "section_number": "1.5",
+        "title": "Transportasi Dan Penanganan",
+        "description": "Prosedur transportasi material dan penanganan bahan di lokasi proyek.",
+        "youtube_url": "RgKAFK5djSk",
+        "order": 5,
+        "created_at": "2026-01-10T13:33:53.000000Z",
+        "updated_at": "2026-01-10T13:33:53.000000Z"
+    },
+    {
+        "id": 6,
+        "section_number": "1.6",
+        "title": "Pembayaran Sertifikat Bulanan",
+        "description": "Prosedur pengajuan dan pembayaran sertifikat bulanan (MC).",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 6,
+        "created_at": "2026-01-10T13:33:53.000000Z",
+        "updated_at": "2026-01-10T13:33:53.000000Z"
+    },
+    {
+        "id": 7,
+        "section_number": "1.7",
+        "title": "Pembayaran Bersyarat (Provisional Sums)",
+        "description": "Penggunaan dan administrasi dana pembayaran bersyarat.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 7,
+        "created_at": "2026-01-10T13:33:53.000000Z",
+        "updated_at": "2026-01-10T13:33:53.000000Z"
+    },
+    {
+        "id": 8,
+        "section_number": "1.8",
+        "title": "Manajemen Dan Keselamatan Lalulintas",
+        "description": "Pengaturan lalu lintas di sekitar area proyek demi keselamatan pengguna jalan dan pekerja.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 8,
+        "created_at": "2026-01-10T13:33:53.000000Z",
+        "updated_at": "2026-01-10T13:33:53.000000Z"
+    },
+    {
+        "id": 9,
+        "section_number": "1.9",
+        "title": "Kajian Teknis Lapangan (Field Engineering)",
+        "description": "Pelaksanaan rekayasa lapangan untuk penyesuaian desain dengan kondisi aktual.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 9,
+        "created_at": "2026-01-10T13:33:53.000000Z",
+        "updated_at": "2026-01-10T13:33:53.000000Z"
+    },
+    {
+        "id": 10,
+        "section_number": "1.10",
+        "title": "Standar Rujukan",
+        "description": "Standar-standar teknis yang menjadi rujukan dalam pelaksanaan pekerjaan.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 10,
+        "created_at": "2026-01-10T13:33:53.000000Z",
+        "updated_at": "2026-01-10T13:33:53.000000Z"
+    },
+    {
+        "id": 11,
+        "section_number": "1.11",
+        "title": "Bahan Dan Penyimpanan",
+        "description": "Persyaratan material konstruksi dan tata cara penyimpanannya.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 11,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 12,
+        "section_number": "1.12",
+        "title": "Jadwal Pelaksanaan",
+        "description": "Penyusunan dan pengendalian jadwal pelaksanaan pekerjaan (Time Schedule).",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 12,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 13,
+        "section_number": "1.13",
+        "title": "Building Information Modeling (BIM)",
+        "description": "Penerapan teknologi BIM dalam pelaksanaan konstruksi.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 13,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 14,
+        "section_number": "1.14",
+        "title": "Pemeliharaan Jalan Yang Berdekatan Dan Bangunan Pelengkapnya",
+        "description": "Kewajiban memelihara jalan akses dan bangunan sekitar proyek.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 14,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 15,
+        "section_number": "1.15",
+        "title": "Dokumen Rekaman Pekerjaan",
+        "description": "Pembuatan as-built drawing dan dokumentasi proyek.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 15,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 16,
+        "section_number": "1.16",
+        "title": "Pekerjaan Pembersihan",
+        "description": "Pembersihan lokasi kerja selama dan setelah pelaksanaan proyek.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 16,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 17,
+        "section_number": "1.17",
+        "title": "Pengamanan Lingkungan Hidup",
+        "description": "Upaya perlindungan dan pengelolaan lingkungan hidup di area konstruksi.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 17,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 18,
+        "section_number": "1.18",
+        "title": "Relokasi Utilitas Dan Pelayanan Yang Ada",
+        "description": "Prosedur pemindahan utilitas publik yang terdampak proyek.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 18,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 19,
+        "section_number": "1.19",
+        "title": "Keselamatan Dan Kesehatan Kerja",
+        "description": "Penerapan prinsip K3 Lanjutan dalam setiap tahapan pekerjaan.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 19,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 20,
+        "section_number": "1.20",
+        "title": "Pengujian Tanah",
+        "description": "Investigasi geoteknik dan pengujian tanah untuk pondasi jalan\/jembatan.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 20,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 21,
+        "section_number": "1.21",
+        "title": "Manajemen Mutu",
+        "description": "Penerapan sistem manajemen mutu untuk menjamin kualitas hasil pekerjaan.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 21,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    },
+    {
+        "id": 22,
+        "section_number": "1.22",
+        "title": "Sistem Manajemen Keselamatan Konstruksi",
+        "description": "Implementasi menyeluruh SMKK sesuai peraturan yang berlaku.",
+        "youtube_url": "dQw4w9WgXcQ",
+        "order": 22,
+        "created_at": "2026-01-10T13:33:54.000000Z",
+        "updated_at": "2026-01-10T13:33:54.000000Z"
+    }
+]

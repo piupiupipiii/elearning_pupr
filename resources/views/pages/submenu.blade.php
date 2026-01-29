@@ -64,6 +64,7 @@
                        data-desc="{{ $material->description ?? 'Tidak ada deskripsi.' }}"
                        data-material-id="{{ $material->id }}"
                        data-locked="{{ $isLocked ? 'true' : 'false' }}"
+                       data-status="{{ $isDone ? 'done' : ($isUnlocked ? 'unlocked' : 'locked') }}"
                        @if($isLocked) onclick="alert('Materi ini masih terkunci. Selesaikan materi sebelumnya terlebih dahulu.'); return false;" @endif>
                         <h4>SEKSI {{ $material->section_number }}</h4>
                         @if($isDone)
@@ -106,14 +107,15 @@
             function updateMulaiButton() {
                 const activeCard = document.querySelector('.slider-card.size-large');
                 if (activeCard) {
-                    const isLocked = activeCard.dataset.locked === 'true';
+                    const status = activeCard.dataset.status;
                     const href = activeCard.getAttribute('href');
 
-                    if (isLocked) {
-                        btnMulai.style.display = 'none';
-                    } else {
+                    // Only show button if status is 'unlocked' or 'done'
+                    if ((status === 'unlocked' || status === 'done') && href && href !== 'javascript:void(0)') {
                         btnMulai.style.display = 'inline-block';
                         btnMulai.href = href;
+                    } else {
+                        btnMulai.style.display = 'none';
                     }
                 }
             }

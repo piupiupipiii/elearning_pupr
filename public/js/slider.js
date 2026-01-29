@@ -41,16 +41,17 @@ document.addEventListener('DOMContentLoaded', function () {
             leftSubtitle.textContent = currentCard.dataset.subtitle || '';
             leftDesc.textContent = currentCard.dataset.desc || '';
 
-            // Update Mulai button
+            // Update Mulai button - only show for unlocked materials
             if (btnMulai) {
-                const isLocked = currentCard.dataset.locked === 'true';
+                const status = currentCard.dataset.status;
                 const href = currentCard.getAttribute('href');
 
-                if (isLocked || !href || href === 'javascript:void(0)') {
-                    btnMulai.style.display = 'none';
-                } else {
+                // Only show button if status is 'unlocked' or 'done' (not 'locked')
+                if ((status === 'unlocked' || status === 'done') && href && href !== 'javascript:void(0)') {
                     btnMulai.style.display = 'inline-block';
                     btnMulai.href = href;
+                } else {
+                    btnMulai.style.display = 'none';
                 }
             }
         }

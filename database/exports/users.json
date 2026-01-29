@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "name": "pipi",
+        "email": "pipipi@gmail.com",
+        "email_verified_at": null,
+        "created_at": "2026-01-08T23:38:41.000000Z",
+        "updated_at": "2026-01-08T23:38:41.000000Z"
+    },
+    {
+        "id": 2,
+        "name": "lalala",
+        "email": "lalala@gmail.com",
+        "email_verified_at": null,
+        "created_at": "2026-01-20T11:46:50.000000Z",
+        "updated_at": "2026-01-20T11:46:50.000000Z"
+    }
+]
